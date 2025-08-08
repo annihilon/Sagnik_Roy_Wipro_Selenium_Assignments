@@ -1,0 +1,731 @@
+1. Multilevel Inheritance for Vehicle Hierarchy
+java
+class Vehicle {
+    Vehicle() {
+        System.out.println("Vehicle Created");
+    }
+}
+
+class Four_wheeler extends Vehicle {
+    Four_wheeler() {
+        System.out.println("Four Wheeler Created");
+    }
+}
+
+class Petrol_Four_Wheeler extends Four_wheeler {
+    Petrol_Four_Wheeler() {
+        System.out.println("Petrol Four Wheeler Created");
+    }
+}
+
+class FiveSeater_Petrol_Four_Wheeler extends Petrol_Four_Wheeler {
+    FiveSeater_Petrol_Four_Wheeler() {
+        System.out.println("Five Seater Petrol Four Wheeler Created");
+    }
+}
+
+class Baleno_FiveSeater_Petrol_Four_Wheeler extends FiveSeater_Petrol_Four_Wheeler {
+    Baleno_FiveSeater_Petrol_Four_Wheeler() {
+        System.out.println("Baleno Five Seater Petrol Four Wheeler Created");
+    }
+}
+
+public class VehicleDemo {
+    public static void main(String[] args) {
+        new Baleno_FiveSeater_Petrol_Four_Wheeler();
+    }
+}
+Output:
+
+text
+Vehicle Created
+Four Wheeler Created
+Petrol Four Wheeler Created
+Five Seater Petrol Four Wheeler Created
+Baleno Five Seater Petrol Four Wheeler Created
+2. Super Keyword Demonstration
+java
+class Parent {
+    String message = "Parent message";
+    
+    void display() {
+        System.out.println("Parent display method");
+    }
+}
+
+class Child extends Parent {
+    String message = "Child message";
+    
+    void display() {
+        super.display();
+        System.out.println("Child display method");
+        System.out.println("Parent message: " + super.message);
+        System.out.println("Child message: " + message);
+    }
+}
+
+public class SuperDemo {
+    public static void main(String[] args) {
+        Child obj = new Child();
+        obj.display();
+    }
+}
+Output:
+
+text
+Parent display method
+Child display method
+Parent message: Parent message
+Child message: Child message
+3. Hospital and Patient Classes
+java
+class Hospital {
+    String name = "City General Hospital";
+    String location = "Downtown";
+    
+    void showInfo() {
+        System.out.println("Hospital Name: " + name);
+        System.out.println("Location: " + location);
+    }
+}
+
+class Patient extends Hospital {
+    String patientName;
+    int age;
+    
+    Patient(String name, int age) {
+        this.patientName = name;
+        this.age = age;
+    }
+    
+    void displayInfo() {
+        super.showInfo();
+        System.out.println("Patient Name: " + patientName);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class HospitalDemo {
+    public static void main(String[] args) {
+        Patient p = new Patient("John Doe", 35);
+        p.displayInfo();
+    }
+}
+Output:
+
+text
+Hospital Name: City General Hospital
+Location: Downtown
+Patient Name: John Doe
+Age: 35
+4. Hierarchical Inheritance for 12th Image
+java
+class After_12th {
+    void showOptions() {
+        System.out.println("Available options after 12th:");
+    }
+}
+
+class Engineering extends After_12th {
+    void showBranches() {
+        System.out.println("Engineering Branches: IT, CS, Mechanical");
+    }
+}
+
+class Medical extends After_12th {
+    void showCourses() {
+        System.out.println("Medical Courses: MBBS, BDS");
+    }
+}
+
+class BCA extends After_12th {
+    void showInfo() {
+        System.out.println("BCA Course Information");
+    }
+}
+
+class IT extends Engineering {
+    void details() {
+        System.out.println("IT Branch Details");
+    }
+}
+
+class CS extends Engineering {
+    void details() {
+        System.out.println("CS Branch Details");
+    }
+}
+
+class MBBS extends Medical {
+    void details() {
+        System.out.println("MBBS Course Details");
+    }
+}
+
+public class EducationDemo {
+    public static void main(String[] args) {
+        IT it = new IT();
+        it.showOptions();
+        it.showBranches();
+        it.details();
+        
+        MBBS mbbs = new MBBS();
+        mbbs.showOptions();
+        mbbs.showCourses();
+        mbbs.details();
+    }
+}
+Output:
+
+text
+Available options after 12th:
+Engineering Branches: IT, CS, Mechanical
+IT Branch Details
+Available options after 12th:
+Medical Courses: MBBS, BDS
+MBBS Course Details
+5. Hierarchical Inheritance for Hospital Image
+java
+class Hospital {
+    void showInfo() {
+        System.out.println("Hospital Information");
+    }
+}
+
+class Doctor extends Hospital {
+    void showTypes() {
+        System.out.println("Doctor Types: Gynac, Endo, Cardiac");
+    }
+}
+
+class Nurse extends Hospital {
+    void showDuties() {
+        System.out.println("Nurse Duties");
+    }
+}
+
+class Accountant extends Hospital {
+    void showWork() {
+        System.out.println("Accountant Work: Payments, Documentation");
+    }
+}
+
+class Gynac extends Doctor {
+    void details() {
+        System.out.println("Gynecologist Details");
+    }
+}
+
+class Cardiac extends Doctor {
+    void details() {
+        System.out.println("Cardiac Specialist Details");
+    }
+}
+
+public class HospitalSystem {
+    public static void main(String[] args) {
+        Gynac g = new Gynac();
+        g.showInfo();
+        g.showTypes();
+        g.details();
+        
+        Accountant a = new Accountant();
+        a.showInfo();
+        a.showWork();
+    }
+}
+Output:
+
+text
+Hospital Information
+Doctor Types: Gynac, Endo, Cardiac
+Gynecologist Details
+Hospital Information
+Accountant Work: Payments, Documentation
+Polymorphism
+1. Calculator with Overloaded add()
+java
+class Calculator {
+    void add(int num1, int num2) {
+        System.out.println("Sum of two integers: " + (num1 + num2));
+    }
+    
+    void add(int num1, int num2, int num3) {
+        System.out.println("Sum of three integers: " + (num1 + num2 + num3));
+    }
+    
+    void add(double num1, double num2) {
+        System.out.println("Sum of two doubles: " + (num1 + num2));
+    }
+}
+
+public class CalculatorDemo {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        calc.add(5, 10);
+        calc.add(5, 10, 15);
+        calc.add(5.5, 10.5);
+    }
+}
+Output:
+
+text
+Sum of two integers: 15
+Sum of three integers: 30
+Sum of two doubles: 16.0
+2. Shape with Circle and Rectangle
+java
+class Shape {
+    void area() {
+        System.out.println("Calculating area");
+    }
+}
+
+class Circle extends Shape {
+    double radius = 7;
+    
+    void area() {
+        double result = Math.PI * radius * radius;
+        System.out.println("Circle Area: " + result);
+    }
+}
+
+class Rectangle extends Shape {
+    double length = 8;
+    double width = 5;
+    
+    void area() {
+        double result = length * width;
+        System.out.println("Rectangle Area: " + result);
+    }
+}
+
+public class ShapeDemo {
+    public static void main(String[] args) {
+        Shape s = new Shape();
+        s.area();
+        
+        Circle c = new Circle();
+        c.area();
+        
+        Rectangle r = new Rectangle();
+        r.area();
+    }
+}
+Output:
+
+text
+Calculating area
+Circle Area: 153.93804002589985
+Rectangle Area: 40.0
+3. Bank with Interest Rates
+java
+class Bank {
+    double getInterestRate() {
+        return 0.0;
+    }
+}
+
+class SBI extends Bank {
+    double getInterestRate() {
+        return 6.7;
+    }
+}
+
+class ICICI extends Bank {
+    double getInterestRate() {
+        return 7.0;
+    }
+}
+
+class HDFC extends Bank {
+    double getInterestRate() {
+        return 7.5;
+    }
+}
+
+public class BankDemo {
+    public static void main(String[] args) {
+        SBI sbi = new SBI();
+        ICICI icici = new ICICI();
+        HDFC hdfc = new HDFC();
+        
+        System.out.println("SBI Interest Rate: " + sbi.getInterestRate() + "%");
+        System.out.println("ICICI Interest Rate: " + icici.getInterestRate() + "%");
+        System.out.println("HDFC Interest Rate: " + hdfc.getInterestRate() + "%");
+    }
+}
+Output:
+
+text
+SBI Interest Rate: 6.7%
+ICICI Interest Rate: 7.0%
+HDFC Interest Rate: 7.5%
+4. Runtime Polymorphism with Constructor Chaining
+java
+class Vehicle {
+    Vehicle() {
+        System.out.println("Vehicle Created");
+    }
+    
+    void start() {
+        System.out.println("Vehicle is starting");
+    }
+}
+
+class Bike extends Vehicle {
+    Bike() {
+        super();
+        System.out.println("Bike Created");
+    }
+    
+    void start() {
+        System.out.println("Bike is starting");
+    }
+}
+
+public class VehicleDemo {
+    public static void main(String[] args) {
+        Vehicle v = new Bike();
+        v.start();
+    }
+}
+Output:
+
+text
+Vehicle Created
+Bike Created
+Bike is starting
+Combined Questions
+1. Abstract SmartDevice
+java
+abstract class SmartDevice {
+    abstract void turnOn();
+    abstract void turnOff();
+    abstract void performFunction();
+}
+
+class SmartPhone extends SmartDevice {
+    void turnOn() {
+        System.out.println("SmartPhone turning on");
+    }
+    
+    void turnOff() {
+        System.out.println("SmartPhone turning off");
+    }
+    
+    void performFunction() {
+        System.out.println("SmartPhone calling and browsing");
+    }
+}
+
+class SmartWatch extends SmartDevice {
+    void turnOn() {
+        System.out.println("SmartWatch turning on");
+    }
+    
+    void turnOff() {
+        System.out.println("SmartWatch turning off");
+    }
+    
+    void performFunction() {
+        System.out.println("SmartWatch tracking fitness and time");
+    }
+}
+
+class SmartSpeaker extends SmartDevice {
+    void turnOn() {
+        System.out.println("SmartSpeaker turning on");
+    }
+    
+    void turnOff() {
+        System.out.println("SmartSpeaker turning off");
+    }
+    
+    void performFunction() {
+        System.out.println("SmartSpeaker playing music and voice commands");
+    }
+}
+
+public class SmartDeviceDemo {
+    public static void main(String[] args) {
+        SmartDevice[] devices = new SmartDevice[3];
+        devices[0] = new SmartPhone();
+        devices[1] = new SmartWatch();
+        devices[2] = new SmartSpeaker();
+        
+        for (SmartDevice device : devices) {
+            device.turnOn();
+            device.performFunction();
+            device.turnOff();
+            System.out.println();
+        }
+    }
+}
+Output:
+
+text
+SmartPhone turning on
+SmartPhone calling and browsing
+SmartPhone turning off
+
+SmartWatch turning on
+SmartWatch tracking fitness and time
+SmartWatch turning off
+
+SmartSpeaker turning on
+SmartSpeaker playing music and voice commands
+SmartSpeaker turning off
+2. Bank Interface with Account Classes
+java
+interface Bank {
+    void deposit(double amount);
+    void withdraw(double amount);
+    double getBalance();
+}
+
+class Account {
+    double balance;
+    
+    Account() {
+        balance = 0;
+    }
+}
+
+class SavingsAccount extends Account implements Bank {
+    public void deposit(double amount) {
+        balance += amount;
+    }
+    
+    public void withdraw(double amount) {
+        if (balance - amount >= 1000) {
+            balance -= amount;
+        } else {
+            System.out.println("Minimum balance violation");
+        }
+    }
+    
+    public double getBalance() {
+        return balance;
+    }
+}
+
+class CurrentAccount extends Account implements Bank {
+    public void deposit(double amount) {
+        balance += amount;
+    }
+    
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+    
+    public double getBalance() {
+        return balance;
+    }
+}
+
+public class BankSystem {
+    public static void main(String[] args) {
+        SavingsAccount sa = new SavingsAccount();
+        sa.deposit(5000);
+        sa.withdraw(4500);
+        System.out.println("Savings Balance: " + sa.getBalance());
+        
+        CurrentAccount ca = new CurrentAccount();
+        ca.deposit(10000);
+        ca.withdraw(9500);
+        System.out.println("Current Balance: " + ca.getBalance());
+    }
+}
+Output:
+
+text
+Minimum balance violation
+Savings Balance: 5000.0
+Current Balance: 500.0
+3. Vehicle with Car, Bike, Truck
+java
+class Vehicle {
+    void start() {
+        System.out.println("Vehicle starting");
+    }
+}
+
+class Car extends Vehicle {
+    void start() {
+        System.out.println("Car starting");
+    }
+}
+
+class Bike extends Vehicle {
+    void start() {
+        System.out.println("Bike starting");
+    }
+}
+
+class Truck extends Vehicle {
+    void start() {
+        System.out.println("Truck starting");
+    }
+}
+
+public class VehicleSystem {
+    static void testVehicle(Vehicle v) {
+        v.start();
+    }
+    
+    public static void main(String[] args) {
+        testVehicle(new Car());
+        testVehicle(new Bike());
+        testVehicle(new Truck());
+    }
+}
+Output:
+
+text
+Car starting
+Bike starting
+Truck starting
+4. Person Abstract Class with Subclasses
+java
+abstract class Person {
+    String name;
+    int age;
+    
+    abstract void getRoleInfo();
+}
+
+class Student extends Person {
+    String course;
+    int rollNumber;
+    
+    void getRoleInfo() {
+        System.out.println("Student: " + name + ", Age: " + age + ", Course: " + course + ", Roll: " + rollNumber);
+    }
+}
+
+class Professor extends Person {
+    String subject;
+    double salary;
+    
+    void getRoleInfo() {
+        System.out.println("Professor: " + name + ", Age: " + age + ", Subject: " + subject + ", Salary: " + salary);
+    }
+}
+
+class TeachingAssistant extends Student {
+    String assistingSubject;
+    
+    void getRoleInfo() {
+        System.out.println("TA: " + name + ", Age: " + age + ", Course: " + course + ", Roll: " + rollNumber + ", Assisting: " + assistingSubject);
+    }
+}
+
+public class PersonSystem {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.name = "Alice";
+        s.age = 20;
+        s.course = "Computer Science";
+        s.rollNumber = 101;
+        
+        Professor p = new Professor();
+        p.name = "Dr. Smith";
+        p.age = 45;
+        p.subject = "Mathematics";
+        p.salary = 75000;
+        
+        TeachingAssistant ta = new TeachingAssistant();
+        ta.name = "Bob";
+        ta.age = 25;
+        ta.course = "Physics";
+        ta.rollNumber = 102;
+        ta.assistingSubject = "Quantum Mechanics";
+        
+        s.getRoleInfo();
+        p.getRoleInfo();
+        ta.getRoleInfo();
+    }
+}
+Output:
+
+text
+Student: Alice, Age: 20, Course: Computer Science, Roll: 101
+Professor: Dr. Smith, Age: 45, Subject: Mathematics, Salary: 75000.0
+TA: Bob, Age: 25, Course: Physics, Roll: 102, Assisting: Quantum Mechanics
+5. Drawable Interface with Shape Classes
+java
+interface Drawable {
+    void draw();
+}
+
+abstract class Shape {
+    abstract void area();
+}
+
+class Circle extends Shape implements Drawable {
+    double radius = 5;
+    
+    void area() {
+        double result = Math.PI * radius * radius;
+        System.out.println("Circle Area: " + result);
+    }
+    
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+class Rectangle extends Shape implements Drawable {
+    double length = 6;
+    double width = 4;
+    
+    void area() {
+        double result = length * width;
+        System.out.println("Rectangle Area: " + result);
+    }
+    
+    public void draw() {
+        System.out.println("Drawing Rectangle");
+    }
+}
+
+class Triangle extends Shape implements Drawable {
+    double base = 5;
+    double height = 3;
+    
+    void area() {
+        double result = 0.5 * base * height;
+        System.out.println("Triangle Area: " + result);
+    }
+    
+    public void draw() {
+        System.out.println("Drawing Triangle");
+    }
+}
+
+public class ShapeSystem {
+    public static void main(String[] args) {
+        Circle c = new Circle();
+        Rectangle r = new Rectangle();
+        Triangle t = new Triangle();
+        
+        c.draw();
+        c.area();
+        
+        r.draw();
+        r.area();
+        
+        t.draw();
+        t.area();
+    }
+}
+Output:
+
+text
+Drawing Circle
+Circle Area: 78.53981633974483
+Drawing Rectangle
+Rectangle Area: 24.0
+Drawing Triangle
+Triangle Area: 7.5
