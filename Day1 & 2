@@ -200,24 +200,27 @@ public class Double_to_int {
         System.out.println(i); // Outputs 10 (decimal part lost)
     }
 }
+
 9. What is the difference between char and String in Java?
-Answer:
 
-char: Single character (primitive), single quotes 'A'
-
-String: Sequence of characters (object), double quotes "Hello"
+char is a single character (primitive type of data) eg: 'A'
+String is a sequence of characters (object), uses double quotes, eg: "Hello"
 
 10. Explain wrapper classes and their use in Java.
-Answer:
-Wrapper classes convert primitives to objects (e.g., int to Integer). Used when objects are needed (like with Collections).
+
+In Java, wrapper classes are an integral concept that enables us to use primitive data types (like int, char, boolean, etc.) as objects. 
+This is important because, while Java is primarily an object-oriented language, it incorporates primitive types for performance optimization. 
+Wrapper classes bridge this gap, allowing us to leverage object-oriented features while retaining the efficiency of primitive types. 
 
 Java Control Statements
+
 6. Write a Java program using nested if statements.
-java
-public class NestedIf {
+
+//Program to give permission to user if he/she is above 18 and has license using nested loop
+public class Nested_if {
     public static void main(String[] args) {
         int age = 20;
-        boolean hasLicense = true;
+        boolean has = true;
         
         if (age >= 18) {
             if (hasLicense) {
@@ -231,8 +234,8 @@ public class NestedIf {
     }
 }
 7. Write a Java program to display the multiplication table of a number using a loop.
-java
-public class MultiplicationTable {
+
+public class Mul_table {
     public static void main(String[] args) {
         int num = 5;
         for (int i = 1; i <= 10; i++) {
@@ -240,80 +243,88 @@ public class MultiplicationTable {
         }
     }
 }
-8. How do you exit from nested loops in Java?
-Answer:
-Use labeled break:
 
-java
-outerLoop:
+8. How do you exit from nested loops in Java?
+
+we use the labeled break we can exit from the outerloop or if we want to exit from a inner loop in
+a nested loop we use the 'break' statement
+
+
 for (int i = 0; i < 5; i++) {
     for (int j = 0; j < 5; j++) {
         if (i == 2 && j == 2) {
-            break outerLoop;
+            break outerLoop;// used to exit from the outerloop
         }
     }
 }
+
 9. Compare and contrast for, while, and do-while loops.
-Answer:
 
-for: Used when iterations are known
-
-while: Checks condition first
-
-do-while: Executes at least once
+for: Used when number of iterations are known, donot executes if conditions not satisfied
+while: Checks condition first, donot executes if conditions not satisfied
+do-while: Executes at least once, even if conditions are not satisfied
 
 10. Write a program that uses a switch-case to simulate a basic calculator.
-java
-public class Calculator {
+
+public class Calculator_demo {
     public static void main(String[] args) {
         char operator = '+';
         int num1 = 10, num2 = 5;
-        
         switch (operator) {
             case '+': System.out.println(num1 + num2); break;
             case '-': System.out.println(num1 - num2); break;
             case '*': System.out.println(num1 * num2); break;
             case '/': System.out.println(num1 / num2); break;
-            default: System.out.println("Invalid operator");
+            default: System.out.println("Invalid input pelase check");
         }
     }
 }
+
 Java Keywords and Operators
+
 6. What is the use of the instanceof keyword in Java?
-Answer:
-Checks if an object is an instance of a class:
 
-java
+Checks if an object is an instance of a class
+
 String s = "Hello";
-boolean result = s instanceof String; // true
+boolean res = s instanceof String;
+System.out.println(res);
+
+O/P: True
+
 7. Explain the difference between == and .equals() in Java.
-Answer:
 
-==: Compares references (memory addresses)
 
-.equals(): Compares content (values)
+When used with primitive data types like int, char, boolean, double '==' compares the actual values stored in those variables. 
+If the values are identical, it returns true; otherwise, it returns false.
+When '==' used with object types, == compares object references / memory addresses
+It returns true only if both references point to the same object in memory.
+
+The .equals() method is a method defined in the Object class, which is the superclass
+of all classes in Java. Its primary purpose is to compare the content or state of two objects for equality.
 
 8. Write a program using the ternary operator.
-java
-public class TernaryDemo {
+
+public class Ternary_demo {
     public static void main(String[] args) {
         int age = 20;
-        String result = (age >= 18) ? "Adult" : "Child";
-        System.out.println(result); // Outputs "Adult"
+        String res = (age >= 18) ? "Adult" : "Child";
+        System.out.println(res);
     }
 }
+Output: Adult
+
 9. What is the use of this and super in method overriding?
-Answer:
 
-this: Refers to current class methods/fields
-
-super: Refers to parent class methods/fields
+this refers to the current instance of the class, used in Accessing current class members, calling other constructors in the same class
+super refers to the immediate parent class (superclass) of the current instance/object
 
 10. Explain bitwise operators with examples.
-Answer:
-Bitwise operators work on bits:
 
-java
+Bitwise operators work on bits, Bitwise operators in Java are used to perform operations
+on individual bits of integer data types (like byte, short, int, and long)
+
+example
 int a = 5; // 0101
 int b = 3; // 0011
 
@@ -321,4 +332,3 @@ System.out.println(a & b); // AND (0001 = 1)
 System.out.println(a | b); // OR (0111 = 7)
 System.out.println(a ^ b); // XOR (0110 = 6)
 System.out.println(~a); // NOT (1010 = -6)
-New chat
