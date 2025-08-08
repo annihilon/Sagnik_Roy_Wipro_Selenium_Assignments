@@ -1,1 +1,343 @@
+Section 1: Java Data Types
+1. What are the different primitive data types available in Java?
 
+Java has 8 primitive data types:
+byte, short, int, long, float, double ( used for decimal numbers), char (for single characters), boolean (returns boolean values like true/false)
+
+2. Explain the difference between primitive and non-primitive data types in Java.
+
+Primitive datatypes are the type of data which are stored directly in memory e.g., int, char,     Non-primitive are Object type of data e.g., String, Array, enums 
+that store references to memory locationsand they are dynamic in nature
+
+3. Write a Java program that demonstrates the use of all primitive data types.
+
+public class PrimitiveTdemo {
+    public static void main(String[] args) {
+        byte myByte = 100;
+        short myShort = 5000;
+        int myInt = 100000;
+        long myLong = 15000000000L;
+        float myFloat = 5.75f;
+        double myDouble = 19.99;
+        char myChar = 'A';
+        boolean myBool = true;
+
+        System.out.println("byte: " + myByte);
+        System.out.println("short: " + myShort);
+        System.out.println("int: " + myInt);
+        System.out.println("long: " + myLong);
+        System.out.println("float: " + myFloat);
+        System.out.println("double: " + myDouble);
+        System.out.println("char: " + myChar);
+        System.out.println("boolean: " + myBool);
+    }
+}
+4. What is type casting? Provide an example of implicit and explicit casting in Java.
+Answer:
+Type casting is converting one data type to another.
+
+java
+// Implicit casting (small to big - automatic)
+int myInt = 10;
+double myDouble = myInt;
+
+// Explicit casting (big to small - manual)
+double myDouble2 = 10.5;
+int myInt2 = (int) myDouble2;
+5. What is the default value of each primitive data type in Java?
+Answer:
+
+byte, short, int, long: 0
+
+float, double: 0.0
+
+char: '\u0000'
+
+boolean: false
+
+Section 2: Java Control Statements
+1. What are control statements in Java? List the types with examples.
+Answer:
+Control statements control program flow:
+
+If-else: if (condition) {...} else {...}
+
+Switch: switch (variable) { case 1: ... }
+
+Loops: for, while, do-while
+
+2. Write a Java program to demonstrate the use of if-else and switch-case statements.
+java
+public class ControlDemo {
+    public static void main(String[] args) {
+        // If-else
+        int age = 20;
+        if (age >= 18) {
+            System.out.println("Adult");
+        } else {
+            System.out.println("Child");
+        }
+
+        // Switch-case
+        int day = 3;
+        switch (day) {
+            case 1: System.out.println("Monday"); break;
+            case 2: System.out.println("Tuesday"); break;
+            case 3: System.out.println("Wednesday"); break;
+            default: System.out.println("Other day");
+        }
+    }
+}
+3. What is the difference between break and continue statements?
+Answer:
+
+break: Exits the loop completely
+
+continue: Skips current iteration and moves to next one
+
+4. Write a Java program to print even numbers between 1 to 50 using a for loop.
+java
+public class EvenNumbers {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 50; i++) {
+            if (i % 2 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
+5. Explain the differences between while and do-while loops with examples.
+Answer:
+
+while: Checks condition first, then executes
+
+do-while: Executes once, then checks condition
+
+java
+// while
+int i = 5;
+while (i < 5) {
+    System.out.println(i); // Won't print
+    i++;
+}
+
+// do-while
+int j = 5;
+do {
+    System.out.println(j); // Will print once
+    j++;
+} while (j < 5);
+Section 3: Java Keywords and Operators
+1. What are keywords in Java? List 10 commonly used keywords.
+Answer:
+Keywords are reserved words with special meaning:
+public, class, static, void, int, if, else, for, while, return
+
+2. Explain the purpose of the following keywords: static, final, this, super.
+Answer:
+
+static: Belongs to class rather than object
+
+final: Makes variable constant or prevents inheritance
+
+this: Refers to current object
+
+super: Refers to parent class
+
+3. What are the types of operators in Java?
+Answer:
+
+Arithmetic: +, -, *, /, %
+
+Relational: ==, !=, >, <
+
+Logical: &&, ||, !
+
+Assignment: =, +=, -=
+
+Bitwise: &, |, ^
+
+4. Write a Java program demonstrating the use of arithmetic, relational, and logical operators.
+java
+public class OperatorsDemo {
+    public static void main(String[] args) {
+        // Arithmetic
+        int a = 10 + 5; // 15
+        
+        // Relational
+        boolean b = (10 > 5); // true
+        
+        // Logical
+        boolean c = (10 > 5) && (5 < 3); // false
+        
+        System.out.println("a: " + a);
+        System.out.println("b: " + b);
+        System.out.println("c: " + c);
+    }
+}
+5. What is operator precedence? How does it affect the outcome of expressions?
+Answer:
+Operator precedence determines which operation is performed first in an expression. For example:
+
+3 + 5 * 2 equals 13 (not 16) because * has higher precedence than +
+
+Additional Questions
+Java Data Types
+6. What is the size and range of each primitive data type in Java?
+Answer:
+
+byte: 1 byte (-128 to 127)
+
+short: 2 bytes (-32,768 to 32,767)
+
+int: 4 bytes (-2 billion to 2 billion)
+
+long: 8 bytes (very large numbers)
+
+float: 4 bytes (6-7 decimal digits)
+
+double: 8 bytes (15 decimal digits)
+
+char: 2 bytes (single Unicode character)
+
+boolean: 1 bit (true/false)
+
+7. How does Java handle overflow and underflow with numeric types?
+Answer:
+Java doesn't prevent overflow/underflow - values wrap around:
+
+byte b = 127; b++; becomes -128
+
+byte b = -128; b--; becomes 127
+
+8. Write a program to convert a double value to an int without data loss.
+java
+public class DoubleToInt {
+    public static void main(String[] args) {
+        double d = 10.99;
+        int i = (int) d; // Explicit casting
+        System.out.println(i); // Outputs 10 (decimal part lost)
+    }
+}
+9. What is the difference between char and String in Java?
+Answer:
+
+char: Single character (primitive), single quotes 'A'
+
+String: Sequence of characters (object), double quotes "Hello"
+
+10. Explain wrapper classes and their use in Java.
+Answer:
+Wrapper classes convert primitives to objects (e.g., int to Integer). Used when objects are needed (like with Collections).
+
+Java Control Statements
+6. Write a Java program using nested if statements.
+java
+public class NestedIf {
+    public static void main(String[] args) {
+        int age = 20;
+        boolean hasLicense = true;
+        
+        if (age >= 18) {
+            if (hasLicense) {
+                System.out.println("Can drive");
+            } else {
+                System.out.println("Need license");
+            }
+        } else {
+            System.out.println("Too young");
+        }
+    }
+}
+7. Write a Java program to display the multiplication table of a number using a loop.
+java
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        int num = 5;
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+8. How do you exit from nested loops in Java?
+Answer:
+Use labeled break:
+
+java
+outerLoop:
+for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 5; j++) {
+        if (i == 2 && j == 2) {
+            break outerLoop;
+        }
+    }
+}
+9. Compare and contrast for, while, and do-while loops.
+Answer:
+
+for: Used when iterations are known
+
+while: Checks condition first
+
+do-while: Executes at least once
+
+10. Write a program that uses a switch-case to simulate a basic calculator.
+java
+public class Calculator {
+    public static void main(String[] args) {
+        char operator = '+';
+        int num1 = 10, num2 = 5;
+        
+        switch (operator) {
+            case '+': System.out.println(num1 + num2); break;
+            case '-': System.out.println(num1 - num2); break;
+            case '*': System.out.println(num1 * num2); break;
+            case '/': System.out.println(num1 / num2); break;
+            default: System.out.println("Invalid operator");
+        }
+    }
+}
+Java Keywords and Operators
+6. What is the use of the instanceof keyword in Java?
+Answer:
+Checks if an object is an instance of a class:
+
+java
+String s = "Hello";
+boolean result = s instanceof String; // true
+7. Explain the difference between == and .equals() in Java.
+Answer:
+
+==: Compares references (memory addresses)
+
+.equals(): Compares content (values)
+
+8. Write a program using the ternary operator.
+java
+public class TernaryDemo {
+    public static void main(String[] args) {
+        int age = 20;
+        String result = (age >= 18) ? "Adult" : "Child";
+        System.out.println(result); // Outputs "Adult"
+    }
+}
+9. What is the use of this and super in method overriding?
+Answer:
+
+this: Refers to current class methods/fields
+
+super: Refers to parent class methods/fields
+
+10. Explain bitwise operators with examples.
+Answer:
+Bitwise operators work on bits:
+
+java
+int a = 5; // 0101
+int b = 3; // 0011
+
+System.out.println(a & b); // AND (0001 = 1)
+System.out.println(a | b); // OR (0111 = 7)
+System.out.println(a ^ b); // XOR (0110 = 6)
+System.out.println(~a); // NOT (1010 = -6)
+New chat
