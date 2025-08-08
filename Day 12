@@ -1,0 +1,195 @@
+Qu   Create procedure or functions for employee table 
+
+1.	Add 5000 bonus to all employee
+2.	Print same name employees
+3.	Print highest and lowest salary from employee table
+CREATE TABLE employee (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2)
+);
+INSERT INTO employee VALUES
+(1, 'Alice', 50000),
+(2, 'Bob', 40000),
+(3, 'Alice', 55000),
+(4, 'David', 60000),
+(5, 'Eve', 40000);
+
+DELIMITER $$
+
+CREATE PROCEDURE add_bonus()
+BEGIN
+    UPDATE employee
+    SET salary = salary + 5000;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE print_duplicate_names()
+BEGIN
+    SELECT emp_name, COUNT(*) as count
+    FROM employee
+    GROUP BY emp_name
+    HAVING COUNT(*) > 1;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE salary_stats()
+BEGIN
+    SELECT 
+        MAX(salary) AS highest_salary, 
+        MIN(salary) AS lowest_salary 
+    FROM employee;
+END $$
+
+DELIMITER ;
+
+package JDBC_conn;
+
+import java.sql.*;
+
+public class EmployeeProcedureDemo {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String pass = "root";
+
+        try (Connection con = DriverManager.getConnection(url, user, pass)) {
+
+            // 1. Add Bonus
+            CallableStatement cs1 = con.prepareCall("{CALL add_bonus()}");
+            cs1.execute();
+            System.out.println("Bonus added successfully.\n");
+
+            // 2. Print Employees with Duplicate Names
+            CallableStatement cs2 = con.prepareCall("{CALL print_duplicate_names()}");
+            ResultSet rs1 = cs2.executeQuery();
+            System.out.println("Employees with same names:");
+            while (rs1.next()) {
+                System.out.println(rs1.getString("emp_name") + " - " + rs1.getInt("count") + " times");
+            }
+
+            // 3. Highest and Lowest Salary
+            CallableStatement cs3 = con.prepareCall("{CALL salary_stats()}");
+            ResultSet rs2 = cs3.executeQuery();
+            if (rs2.next()) {
+                System.out.println("\nHighest Salary: " + rs2.getDouble("highest_salary"));
+                System.out.println("Lowest Salary: " + rs2.getDouble("lowest_salary"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+Qu2.     Create procedure or functions for Hospital table
+     1. print avg patient count on daily basis
+     2. print all the patients whose belong to same ward
+     3. arrange the patients list according their admission date
+
+CREATE TABLE hospital (
+    patient_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    ward_no INT,
+    admission_date DATE
+);
+drop table hospital;
+INSERT INTO hospital VALUES
+(1, 'Kajal devgan', 101, '2025-08-01'),
+(2, 'Kareena kapoor', 102, '2025-08-01'),
+(3, 'Mrunal thakur', 101, '2025-08-01'),
+(4, 'Priyanka chopra', 103, '2025-08-02'),
+(5, 'Kareeshama kapoor', 101, '2025-08-02');
+
+DELIMITER $$
+
+CREATE PROCEDURE avg_patient_count_daily()
+BEGIN
+    SELECT AVG(cnt) AS avg_patient_per_day
+    FROM (
+        SELECT admission_date, COUNT(*) AS cnt
+        FROM hospital
+        GROUP BY admission_date
+    ) AS sub;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE patients_same_ward()
+BEGIN
+    SELECT h1.*
+    FROM hospital h1
+    JOIN (
+        SELECT ward_no
+        FROM hospital
+        GROUP BY ward_no
+        HAVING COUNT(*) > 1
+    ) h2 ON h1.ward_no = h2.ward_no;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE patients_by_admission()
+BEGIN
+    SELECT * FROM hospital ORDER BY admission_date;
+END $$
+
+DELIMITER ;
+
+
+
+
+
+package JDBC_conn;
+import java.sql.*;
+
+public class Hospital_data{
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/mydb"; 
+        String user = "root";
+        String password = "root";
+
+        try (Connection con = DriverManager.getConnection(url, user, password)) {
+            System.out.println("Connected to DB...");
+
+            // 1. Average patient count daily
+            CallableStatement cs1 = con.prepareCall("{CALL avg_patient_count_daily()}");
+            ResultSet rs1 = cs1.executeQuery();
+            while (rs1.next()) {
+                System.out.println("Average patients per day: " + rs1.getDouble("avg_patient_per_day"));
+            }
+
+            // 2. Patients in same ward
+            CallableStatement cs2 = con.prepareCall("{CALL patients_same_ward()}");
+            ResultSet rs2 = cs2.executeQuery();
+            System.out.println("\nPatients in same ward:");
+            while (rs2.next()) {
+                System.out.println(rs2.getInt("patient_id") + " - " + rs2.getString("name") +
+                                   " (Ward: " + rs2.getInt("ward_no") + ")");
+            }
+
+            // 3. Patients ordered by admission date
+            CallableStatement cs3 = con.prepareCall("{CALL patients_by_admission()}");
+            ResultSet rs3 = cs3.executeQuery();
+            System.out.println("\nPatients by admission date:");
+            while (rs3.next()) {
+                System.out.println(rs3.getInt("patient_id") + " - " + rs3.getString("name") +
+                                   " (Admitted: " + rs3.getDate("admission_date") + ")");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
