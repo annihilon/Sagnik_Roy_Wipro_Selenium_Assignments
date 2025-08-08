@@ -1,5 +1,6 @@
 1. Multilevel Inheritance for Vehicle Hierarchy
-java
+
+package day_4_assignment;
 class Vehicle {
     Vehicle() {
         System.out.println("Vehicle Created");
@@ -36,15 +37,15 @@ public class VehicleDemo {
     }
 }
 Output:
-
-text
 Vehicle Created
 Four Wheeler Created
 Petrol Four Wheeler Created
 Five Seater Petrol Four Wheeler Created
 Baleno Five Seater Petrol Four Wheeler Created
+
 2. Super Keyword Demonstration
-java
+
+package day_4_assignment;
 class Parent {
     String message = "Parent message";
     
@@ -70,15 +71,16 @@ public class SuperDemo {
         obj.display();
     }
 }
-Output:
 
-text
+Output:
 Parent display method
 Child display method
 Parent message: Parent message
 Child message: Child message
+
 3. Hospital and Patient Classes
-java
+
+package day_4_assignment;
 class Hospital {
     String name = "City General Hospital";
     String location = "Downtown";
@@ -112,14 +114,14 @@ public class HospitalDemo {
     }
 }
 Output:
-
-text
 Hospital Name: City General Hospital
 Location: Downtown
 Patient Name: John Doe
 Age: 35
+
 4. Hierarchical Inheritance for 12th Image
-java
+
+package day_4_assignment;
 class After_12th {
     void showOptions() {
         System.out.println("Available options after 12th:");
@@ -176,16 +178,16 @@ public class EducationDemo {
     }
 }
 Output:
-
-text
 Available options after 12th:
 Engineering Branches: IT, CS, Mechanical
 IT Branch Details
 Available options after 12th:
 Medical Courses: MBBS, BDS
 MBBS Course Details
+
 5. Hierarchical Inheritance for Hospital Image
-java
+
+package day_4_assignment;
 class Hospital {
     void showInfo() {
         System.out.println("Hospital Information");
@@ -234,17 +236,19 @@ public class HospitalSystem {
         a.showWork();
     }
 }
-Output:
 
-text
+Output:
 Hospital Information
 Doctor Types: Gynac, Endo, Cardiac
 Gynecologist Details
 Hospital Information
 Accountant Work: Payments, Documentation
+
 Polymorphism
-1. Calculator with Overloaded add()
-java
+
+1. Calculator POlymorphism
+
+package day_4_assignment;
 class Calculator {
     void add(int num1, int num2) {
         System.out.println("Sum of two integers: " + (num1 + num2));
@@ -268,13 +272,13 @@ public class CalculatorDemo {
     }
 }
 Output:
-
-text
 Sum of two integers: 15
 Sum of three integers: 30
 Sum of two doubles: 16.0
+
 2. Shape with Circle and Rectangle
-java
+
+package day_4_assignment;
 class Shape {
     void area() {
         System.out.println("Calculating area");
@@ -313,13 +317,13 @@ public class ShapeDemo {
     }
 }
 Output:
-
-text
 Calculating area
 Circle Area: 153.93804002589985
 Rectangle Area: 40.0
+
 3. Bank with Interest Rates
-java
+
+package day_4_assignment;
 class Bank {
     double getInterestRate() {
         return 0.0;
@@ -356,13 +360,13 @@ public class BankDemo {
     }
 }
 Output:
-
-text
 SBI Interest Rate: 6.7%
 ICICI Interest Rate: 7.0%
 HDFC Interest Rate: 7.5%
+
 4. Runtime Polymorphism with Constructor Chaining
-java
+
+package day_4_assignment;
 class Vehicle {
     Vehicle() {
         System.out.println("Vehicle Created");
@@ -391,14 +395,15 @@ public class VehicleDemo {
     }
 }
 Output:
-
-text
 Vehicle Created
 Bike Created
 Bike is starting
+
 Combined Questions
+
 1. Abstract SmartDevice
-java
+
+package day_4_assignment;
 abstract class SmartDevice {
     abstract void turnOn();
     abstract void turnOff();
@@ -463,8 +468,6 @@ public class SmartDeviceDemo {
     }
 }
 Output:
-
-text
 SmartPhone turning on
 SmartPhone calling and browsing
 SmartPhone turning off
@@ -476,8 +479,10 @@ SmartWatch turning off
 SmartSpeaker turning on
 SmartSpeaker playing music and voice commands
 SmartSpeaker turning off
+
 2. Bank Interface with Account Classes
-java
+
+package day_4_assignment;
 interface Bank {
     void deposit(double amount);
     void withdraw(double amount);
@@ -538,13 +543,13 @@ public class BankSystem {
     }
 }
 Output:
-
-text
 Minimum balance violation
 Savings Balance: 5000.0
 Current Balance: 500.0
+
 3. Vehicle with Car, Bike, Truck
-java
+
+package day_4_assignment;
 class Vehicle {
     void start() {
         System.out.println("Vehicle starting");
@@ -581,13 +586,13 @@ public class VehicleSystem {
     }
 }
 Output:
-
-text
 Car starting
 Bike starting
 Truck starting
+
 4. Person Abstract Class with Subclasses
-java
+
+package day_4_assignment;
 abstract class Person {
     String name;
     int age;
@@ -648,13 +653,13 @@ public class PersonSystem {
     }
 }
 Output:
-
-text
 Student: Alice, Age: 20, Course: Computer Science, Roll: 101
 Professor: Dr. Smith, Age: 45, Subject: Mathematics, Salary: 75000.0
 TA: Bob, Age: 25, Course: Physics, Roll: 102, Assisting: Quantum Mechanics
+
 5. Drawable Interface with Shape Classes
-java
+
+package day_4_assignment;
 interface Drawable {
     void draw();
 }
@@ -721,8 +726,6 @@ public class ShapeSystem {
     }
 }
 Output:
-
-text
 Drawing Circle
 Circle Area: 78.53981633974483
 Drawing Rectangle
