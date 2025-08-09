@@ -1,1 +1,621 @@
+Type Casting Questions
+1. Primitive Type Casting
 
+package day6_assignment;
+
+import java.util.Scanner;
+
+public class Question1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter an integer: ");
+        int num = sc.nextInt();
+
+        double d = num;
+
+        System.out.println("Integer value: " + num);
+        System.out.println("Widened to double: " + d);
+
+        System.out.println("Enter a double: ");
+        double num2 = sc.nextDouble();
+
+        int intValue = (int) num2;
+        short shortValue = (short) intValue;
+
+        System.out.println("Double Value: " + num2);
+        System.out.println("Narrowed to int: " + intValue);
+        System.out.println("Further narrowed to short: " + shortValue);
+    }
+}
+Output:
+Enter an integer: 
+5
+Integer value: 5
+Widened to double: 5.0
+Enter a double: 
+1234.567
+Double Value: 1234.567
+Narrowed to int: 1234
+Further narrowed to short: 1234
+
+2. String Conversion
+
+package day6_assignment;
+
+public class Question2 {
+    public static void main(String[] args) {
+        int num = 1234;
+
+        String str = String.valueOf(num);
+        System.out.println("Converted int to String: " + str);
+
+        try {
+            int parsedNum = Integer.parseInt(str);
+            System.out.println("Converted String back to int: " + parsedNum);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: String is not a valid integer!");
+        }
+    }
+}
+Output:
+Converted int to String: 1234
+Converted String back to int: 1234
+
+Compound Assignment Behavior
+
+package day6_assignment;
+
+public class Question1 {
+    public static void main(String[] args) {
+        int x = 5;
+        
+        // x = x + 4.5;
+        
+        x += 4.5; 
+        System.out.println("x after += operation: " + x);
+    }
+}
+Output:
+
+x after += operation: 9
+
+Object Casting with Inheritance
+
+package day6_object_casting;
+
+class Animal {
+    void makeSound() {
+        System.out.println("Animal Makes Sound");
+    }
+}
+
+class Dog extends Animal {
+    void makeSound() {
+        System.out.println("Woof!");
+    }
+
+    void fetch() {
+        System.out.println("Dog is fetching the ball.");
+    }
+}
+
+public class Question1 {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        Animal a = d;
+        a.makeSound();
+
+        Dog d2 = (Dog) a;
+        d2.fetch();
+    }
+}
+Output:
+Woof!
+Dog is fetching the ball.
+
+Mini Project - Temperature Converter
+
+package day6_mini_project;
+
+import java.util.Scanner;
+
+public class TemperatureConverter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Temperature in Celsius (double): ");
+        double celsius = sc.nextDouble();
+
+        double fahrenheit = celsius * 9 / 5 + 32;
+        int truncatedFahrenheit = (int) fahrenheit;
+
+        System.out.println("Temperature in Fahrenheit (precise): " + fahrenheit);
+        System.out.println("Temperature in Fahrenheit (truncated to int): " + truncatedFahrenheit);
+
+        System.out.println("\nNote: The int version loses precision because decimals are cut off.");
+    }
+}
+Output:
+Enter Temperature in Celsius (double): 37.5
+Temperature in Fahrenheit (precise): 99.5
+Temperature in Fahrenheit (truncated to int): 99
+
+
+Enum Questions
+
+1. Days of the Week
+
+package day6_enums;
+
+import java.util.Scanner;
+
+public class DaysOfWeekDemo {
+    enum DaysOfWeek {
+        monday, tuesday, wednesday, thursday, friday, saturday, sunday
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Day Name: ");
+        String str = sc.next().toLowerCase();
+
+        try {
+            DaysOfWeek day = DaysOfWeek.valueOf(str);
+
+            System.out.println("Day ordinal position: " + day.ordinal());
+
+            if (day == DaysOfWeek.saturday || day == DaysOfWeek.sunday) {
+                System.out.println("It's a weekend!");
+            } else {
+                System.out.println("It's a weekday.");
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid day entered. Please enter a valid day of the week.");
+        }
+    }
+}
+Output:
+
+Enter Day Name: sunday
+Day ordinal position: 6
+It's a weekend!
+
+2. Compass Directions
+
+package day6_enums;
+
+import java.util.Scanner;
+
+public class CompassDirectionsDemo {
+    enum Directions {
+        NORTH, SOUTH, EAST, WEST
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter a Direction: ");
+        String str = sc.next().toUpperCase();
+
+        try {
+            Directions d = Directions.valueOf(str);
+
+            switch (d) {
+                case NORTH:
+                    System.out.println("Move North");
+                    break;
+                case SOUTH:
+                    System.out.println("Move South");
+                    break;
+                case EAST:
+                    System.out.println("Move East");
+                    break;
+                case WEST:
+                    System.out.println("Move West");
+                    break;
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid input! Please enter one of: NORTH, SOUTH, EAST, WEST.");
+        }
+    }
+}
+Output:
+
+Enter a Direction: 
+EAST
+Move East
+
+3. Shape Area Calculator
+
+package day6_enums;
+
+public class ShapeAreaCalculator {
+    enum Shape {
+        CIRCLE {
+            double area(double... params) {
+                double radius = params[0];
+                return Math.PI * radius * radius;
+            }
+        },
+        RECTANGLE {
+            double area(double... params) {
+                double length = params[0];
+                double width = params[1];
+                return length * width;
+            }
+        },
+        SQUARE {
+            double area(double... params) {
+                double side = params[0];
+                return side * side;
+            }
+        },
+        TRIANGLE {
+            double area(double... params) {
+                double base = params[0];
+                double height = params[1];
+                return 0.5 * base * height;
+            }
+        };
+
+        abstract double area(double... params);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Sample Areas:");
+
+        System.out.println("Circle area (radius 5): " + Shape.CIRCLE.area(5));
+        System.out.println("Rectangle area (length 4, width 6): " + Shape.RECTANGLE.area(4, 6));
+        System.out.println("Square area (side 7): " + Shape.SQUARE.area(7));
+        System.out.println("Triangle area (base 10, height 8): " + Shape.TRIANGLE.area(10, 8));
+
+        System.out.println("\nLooping over all shapes with sample inputs:");
+        for (Shape s : Shape.values()) {
+            switch (s) {
+                case CIRCLE:
+                    System.out.println(s + " area: " + s.area(3));
+                    break;
+                case RECTANGLE:
+                    System.out.println(s + " area: " + s.area(4, 5));
+                    break;
+                case SQUARE:
+                    System.out.println(s + " area: " + s.area(6));
+                    break;
+                case TRIANGLE:
+                    System.out.println(s + " area: " + s.area(5, 12));
+                    break;
+            }
+        }
+    }
+}
+Output:
+
+Sample Areas:
+Circle area (radius 5): 78.53981633974483
+Rectangle area (length 4, width 6): 24.0
+Square area (side 7): 49.0
+Triangle area (base 10, height 8): 40.0
+
+Looping over all shapes with sample inputs:
+CIRCLE area: 28.274333882308138
+RECTANGLE area: 20.0
+SQUARE area: 36.0
+TRIANGLE area: 30.0
+
+4. Card Suit & Rank
+
+package day6_enums;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class CardGameDemo {
+    enum Suit {
+        CLUBS, DIAMONDS, HEARTS, SPADES
+    }
+
+    enum Rank {
+        ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
+    }
+
+    static class Card {
+        private final Suit suit;
+        private final Rank rank;
+
+        public Card(Suit suit, Rank rank) {
+            this.suit = suit;
+            this.rank = rank;
+        }
+
+        @Override
+        public String toString() {
+            return rank + " of " + suit;
+        }
+    }
+
+    static class Deck {
+        private final List<Card> cards;
+
+        public Deck() {
+            cards = new ArrayList<>();
+            for (Suit suit : Suit.values()) {
+                for (Rank rank : Rank.values()) {
+                    cards.add(new Card(suit, rank));
+                }
+            }
+        }
+
+        public void shuffle() {
+            Collections.shuffle(cards);
+        }
+
+        public void printDeck() {
+            for (Card card : cards) {
+                System.out.println(card);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Deck deck = new Deck();
+        System.out.println("Deck created with 52 cards.\n");
+
+        System.out.println("Shuffling deck...\n");
+        deck.shuffle();
+
+        deck.printDeck();
+    }
+}
+Output:
+
+Deck created with 52 cards.
+
+Shuffling deck...
+
+FIVE of HEARTS
+QUEEN of DIAMONDS
+ACE of SPADES
+
+5. Priority Levels
+
+package day6_enums;
+
+public class PriorityLevelDemo {
+    enum PriorityLevel {
+        LOW(1),
+        MEDIUM(2),
+        HIGH(3),
+        CRITICAL(4);
+
+        private final int severity;
+
+        PriorityLevel(int severity) {
+            this.severity = severity;
+        }
+
+        public int getSeverity() {
+            return severity;
+        }
+
+        public boolean isUrgent() {
+            return severity >= 3;
+        }
+
+        @Override
+        public String toString() {
+            return name() + " (Severity: " + severity + ", Urgent: " + isUrgent() + ")";
+        }
+    }
+
+    public static void main(String[] args) {
+        for (PriorityLevel level : PriorityLevel.values()) {
+            System.out.println(level);
+            if (level.isUrgent()) {
+                System.out.println("Take immediate action for: " + level.name());
+            } else {
+                System.out.println("Normal handling for: " + level.name());
+            }
+            System.out.println();
+        }
+    }
+}
+Output:
+
+LOW (Severity: 1, Urgent: false)
+Normal handling for: LOW
+
+MEDIUM (Severity: 2, Urgent: false)
+Normal handling for: MEDIUM
+
+HIGH (Severity: 3, Urgent: true)
+Take immediate action for: HIGH
+
+CRITICAL (Severity: 4, Urgent: true)
+Take immediate action for: CRITICAL
+
+6. Traffic Light
+
+package day6_enums;
+
+public class TrafficLightDemo {
+    interface State {
+        State next();
+    }
+
+    enum TrafficLight implements State {
+        RED {
+            public State next() {
+                return GREEN;
+            }
+        },
+        GREEN {
+            public State next() {
+                return YELLOW;
+            }
+        },
+        YELLOW {
+            public State next() {
+                return RED;
+            }
+        };
+    }
+
+    public static void main(String[] args) {
+        State current = TrafficLight.RED;
+        System.out.println("Starting from: " + current);
+
+        for (int i = 1; i <= 6; i++) {
+            current = current.next();
+            System.out.println("Transition " + i + ": " + current);
+        }
+    }
+}
+Output:
+
+Starting from: RED
+Transition 1: GREEN
+Transition 2: YELLOW
+Transition 3: RED
+Transition 4: GREEN
+Transition 5: YELLOW
+Transition 6: RED
+
+7. Game Setup
+
+package day6_enums;
+
+public class GameSetupDemo {
+    enum Difficulty {
+        EASY, MEDIUM, HARD
+    }
+
+    static class Game {
+        private int bullets;
+        private Difficulty difficulty;
+
+        public Game(Difficulty difficulty) {
+            this.difficulty = difficulty;
+            setupGame();
+        }
+
+        private void setupGame() {
+            switch (difficulty) {
+                case EASY:
+                    bullets = 3000;
+                    break;
+                case MEDIUM:
+                    bullets = 2000;
+                    break;
+                case HARD:
+                    bullets = 1000;
+                    break;
+                default:
+                    bullets = 0;
+            }
+        }
+
+        public void displaySetup() {
+            System.out.println("Difficulty: " + difficulty);
+            System.out.println("Bullets: " + bullets);
+        }
+    }
+
+    public static void main(String[] args) {
+        Game easyGame = new Game(Difficulty.EASY);
+        easyGame.displaySetup();
+
+        Game mediumGame = new Game(Difficulty.MEDIUM);
+        mediumGame.displaySetup();
+
+        Game hardGame = new Game(Difficulty.HARD);
+        hardGame.displaySetup();
+    }
+}
+Output:
+
+Difficulty: EASY
+Bullets: 3000
+Difficulty: MEDIUM
+Bullets: 2000
+Difficulty: HARD
+Bullets: 1000
+
+Exception Handling Questions
+1. Division & Array Access
+
+package day6_exception_handling;
+
+public class ExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            int num = 10;
+            int result = num / 0;
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Division by zero is not allowed!");
+        } finally {
+            System.out.println("Division operation completed.");
+        }
+
+        System.out.println("--------------------------");
+
+        try {
+            int[] arr = {1, 2, 3};
+            System.out.println("Accessing 5th element: " + arr[4]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index out of bounds! Please check your index.");
+        } finally {
+            System.out.println("Array access operation completed.");
+        }
+    }
+}
+Output:
+
+Division by zero is not allowed!
+Division operation completed.
+--------------------------
+Array index out of bounds! Please check your index.
+Array access operation completed.
+
+2. Custom Exception
+
+package day6_exception_handling;
+
+class OddNumberException extends Exception {
+    public OddNumberException(String message) {
+        super(message);
+    }
+}
+
+public class OddChecker {
+    public static void checkOdd(int n) throws OddNumberException {
+        if (n % 2 != 0) {
+            throw new OddNumberException("Odd number: " + n);
+        } else {
+            System.out.println("Even number: " + n);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {2, 5, 8, 11};
+
+        for (int n : numbers) {
+            try {
+                checkOdd(n);
+            } catch (OddNumberException e) {
+                System.out.println("Exception caught: " + e.getMessage());
+            }
+        }
+    }
+}
+Output:
+
+Even number: 2
+Exception caught: Odd number: 5
+Even number: 8
+Exception caught: Odd number: 11
