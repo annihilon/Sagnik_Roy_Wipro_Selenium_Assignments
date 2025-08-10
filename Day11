@@ -1,0 +1,587 @@
+Q1. Connect to MySQL database using JDBC
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q1 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        System.out.println("Connection created successfully");
+        con.close();
+    }
+}
+Output:
+Connection created successfully
+
+Q2. Insert student records into a database table
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q2 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        stmt.executeUpdate("create table if not exists students(id int primary key, name varchar(20), marks int)");
+        stmt.executeUpdate("insert into students values(1, 'Amit', 85)");
+        stmt.executeUpdate("insert into students values(2, 'Priya', 92)");
+        stmt.executeUpdate("insert into students values(3, 'Rahul', 78)");
+        System.out.println("3 student records inserted");
+
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+
+3 student records inserted
+
+Q3. Fetch and display all student records
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q3 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select * from students");
+        System.out.println("ID\tName\tMarks");
+        while(rs.next()) {
+            System.out.println(rs.getInt("id") + "\t" + rs.getString("name") + "\t" + rs.getInt("marks"));
+        }
+
+        rs.close();
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+ID      Name    Marks
+1       Amit    85
+2       Priya   92
+3       Rahul   78
+
+Q4. Search student by ID
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q4 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+        int searchId = 2;
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select * from students where id = " + searchId);
+        if(rs.next()) {
+            System.out.println("Student found:");
+            System.out.println("ID: " + rs.getInt("id"));
+            System.out.println("Name: " + rs.getString("name"));
+            System.out.println("Marks: " + rs.getInt("marks"));
+        } else {
+            System.out.println("Student not found");
+        }
+
+        rs.close();
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+Student found:
+ID: 2
+Name: Priya
+Marks: 92
+
+Q5. Update student details
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q5 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        stmt.executeUpdate("update students set marks = 90 where id = 1");
+        System.out.println("Student record updated");
+
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+Student record updated
+
+Q6. Delete student record
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q6 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        stmt.executeUpdate("delete from students where id = 3");
+        System.out.println("Student record deleted");
+
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+Student record deleted
+
+Q7. CRUD operations on Employee table
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q7 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        stmt.executeUpdate("create table if not exists employees(id int primary key, name varchar(20), salary int)");
+        stmt.executeUpdate("insert into employees values(101, 'John', 50000)");
+        stmt.executeUpdate("insert into employees values(102, 'Alice', 60000)");
+        System.out.println("Employees created");
+
+        ResultSet rs = stmt.executeQuery("select * from employees");
+        System.out.println("Employees:");
+        while(rs.next()) {
+            System.out.println(rs.getInt("id") + "\t" + rs.getString("name") + "\t" + rs.getInt("salary"));
+        }
+
+        stmt.executeUpdate("update employees set salary = 55000 where id = 101");
+        System.out.println("Employee updated");
+
+        stmt.executeUpdate("delete from employees where id = 102");
+        System.out.println("Employee deleted");
+
+        rs.close();
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+Employees created
+Employees:
+101     John    50000
+102     Alice   60000
+Employee updated
+Employee deleted
+
+Q8. Count total rows in a table
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q8 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select count(*) from students");
+        if(rs.next()) {
+            System.out.println("Total students: " + rs.getInt(1));
+        }
+
+        rs.close();
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+Total students: 2
+
+Q9. Sort students by name
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q9 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select * from students order by name");
+        System.out.println("Students sorted by name:");
+        while(rs.next()) {
+            System.out.println(rs.getInt("id") + "\t" + rs.getString("name") + "\t" + rs.getInt("marks"));
+        }
+
+        rs.close();
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+Students sorted by name:
+1       Amit    90
+2       Priya   92
+
+Q10. Students with percentage > 75
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q10 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select * from students where marks > 75");
+        System.out.println("Students with marks > 75:");
+        while(rs.next()) {
+            System.out.println(rs.getInt("id") + "\t" + rs.getString("name") + "\t" + rs.getInt("marks"));
+        }
+
+        rs.close();
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+Students with marks > 75:
+1       Amit    90
+2       Priya   92
+
+Q11. PreparedStatement to insert multiple students
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q11 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+
+        PreparedStatement pst = con.prepareStatement("insert into students values(?, ?, ?)");
+        
+        pst.setInt(1, 4);
+        pst.setString(2, "Neha");
+        pst.setInt(3, 88);
+        pst.executeUpdate();
+
+        pst.setInt(1, 5);
+        pst.setString(2, "Ravi");
+        pst.setInt(3, 95);
+        pst.executeUpdate();
+
+        System.out.println("2 students added using PreparedStatement");
+
+        pst.close();
+        con.close();
+    }
+}
+Output:
+2 students added using PreparedStatement
+
+Q12. Transaction management
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q12 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        con.setAutoCommit(false);
+
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("update students set marks = marks + 5 where id = 1");
+            stmt.executeUpdate("update students set marks = marks + 5 where id = 2");
+            con.commit();
+            System.out.println("Transaction committed");
+        } catch(SQLException e) {
+            con.rollback();
+            System.out.println("Transaction rolled back");
+        }
+
+        con.close();
+    }
+}
+Outputt
+Transaction committed
+
+Q13. Handle JDBC exceptions
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q13 {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, password);
+            Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery("select * from students where id = 99");
+            if(rs.next()) {
+                System.out.println("Student found");
+            } else {
+                System.out.println("Student not found");
+            }
+
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch(ClassNotFoundException e) {
+            System.out.println("JDBC driver not found");
+        } catch(SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+    }
+}
+Output:
+Student not found
+
+Q14. Login system with JDBC
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q14 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+        String inputUsername = "admin";
+        String inputPassword = "admin123";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select * from users where username = '" + inputUsername + 
+                                        "' and password = '" + inputPassword + "'");
+        if(rs.next()) {
+            System.out.println("Login successful");
+        } else {
+            System.out.println("Invalid credentials");
+        }
+
+        rs.close();
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+Invalid credentials
+
+Q15. Menu-driven student management
+
+package day11_assignment;
+import java.sql.*;
+import java.util.Scanner;
+
+public class Q15 {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+        Scanner sc = new Scanner(System.in);
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        System.out.println("1. Add student\n2. Search student\n3. Update marks\nEnter choice:");
+        int choice = sc.nextInt();
+
+        switch(choice) {
+            case 1:
+                System.out.println("Enter ID, name, marks:");
+                int id = sc.nextInt();
+                String name = sc.next();
+                int marks = sc.nextInt();
+                stmt.executeUpdate("insert into students values(" + id + ", '" + name + "', " + marks + ")");
+                System.out.println("Student added");
+                break;
+            case 2:
+                System.out.println("Enter ID to search:");
+                id = sc.nextInt();
+                ResultSet rs = stmt.executeQuery("select * from students where id = " + id);
+                if(rs.next()) {
+                    System.out.println("Student found: " + rs.getString("name"));
+                } else {
+                    System.out.println("Student not found");
+                }
+                rs.close();
+                break;
+            case 3:
+                System.out.println("Enter ID and new marks:");
+                id = sc.nextInt();
+                marks = sc.nextInt();
+                stmt.executeUpdate("update students set marks = " + marks + " where id = " + id);
+                System.out.println("Marks updated");
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
+
+        stmt.close();
+        con.close();
+        sc.close();
+    }
+}
+Output 
+1. Add student
+2. Search student
+3. Update marks
+Enter choice: 2
+Enter ID to search: 1
+Student found: Amit
+
+Q16. Library Management System - Add book
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q16_AddBook {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        stmt.executeUpdate("create table if not exists books(book_id int primary key, title varchar(50), author varchar(30), available boolean)");
+        stmt.executeUpdate("insert into books values(101, 'Java Programming', 'John Doe', true)");
+        System.out.println("Book added to library");
+
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+Book added to library
+
+Q17. Hospital Management - Register patient
+
+package day11_assignment;
+import java.sql.*;
+
+public class Q17_RegisterPatient {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        String url = "jdbc:mysql://localhost:3306/hospital_db";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        stmt.executeUpdate("insert into patients(name, age, gender) values('Rahul Sharma', 35, 'Male')");
+        System.out.println("Patient registered successfully");
+
+        stmt.close();
+        con.close();
+    }
+}
+Output:
+
+Patient registered successfully
+
+Q18. Export data to CSV file
+
+package day11_assignment;
+import java.sql.*;
+import java.io.*;
+
+public class Q18_ExportToCSV {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String password = "7980";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement stmt = con.createStatement();
+
+        ResultSet rs = stmt.executeQuery("select * from students");
+        FileWriter fw = new FileWriter("students.csv");
+        
+        while(rs.next()) {
+            fw.write(rs.getInt("id") + "," + rs.getString("name") + "," + rs.getInt("marks") + "\n");
+        }
+        
+        fw.close();
+        rs.close();
+        stmt.close();
+        con.close();
+        System.out.println("Data exported to students.csv");
+    }
+}
+Output:
+Data exported to students.csv
