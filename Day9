@@ -1,0 +1,1123 @@
+Q1. Sort a list of students by roll number (ascending) using Comparable
+
+package day9_assignment;
+import java.util.*;
+
+class Student implements Comparable<Student> {
+    int rollNo;
+    String name;
+    int marks;
+    
+    Student(int rollNo, String name, int marks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.marks = marks;
+    }
+    
+    public int compareTo(Student s) {
+        return this.rollNo - s.rollNo;
+    }
+    
+    public String toString() {
+        return rollNo + " " + name + " " + marks;
+    }
+}
+
+public class Q1 {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(3, "Amit", 85));
+        students.add(new Student(1, "Rahul", 90));
+        students.add(new Student(2, "Priya", 78));
+        
+        Collections.sort(students);
+        
+        for(Student s : students) {
+            System.out.println(s);
+        }
+    }
+}
+Output:
+
+1 Rahul 90
+2 Priya 78
+3 Amit 85
+
+Q2. Create a Product class and sort products by price using Comparable
+
+package day9_assignment;
+import java.util.*;
+
+class Product implements Comparable<Product> {
+    String name;
+    double price;
+    
+    Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+    
+    public int compareTo(Product p) {
+        return Double.compare(this.price, p.price);
+    }
+    
+    public String toString() {
+        return name + " " + price;
+    }
+}
+
+public class Q2 {
+    public static void main(String[] args) {
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("Laptop", 50000));
+        products.add(new Product("Mobile", 20000));
+        products.add(new Product("Tablet", 15000));
+        
+        Collections.sort(products);
+        
+        for(Product p : products) {
+            System.out.println(p);
+        }
+    }
+}
+Output:
+
+Tablet 15000.0
+Mobile 20000.0
+Laptop 50000.0
+
+Q3. Create an Employee class and sort by name using Comparable
+
+package day9_assignment;
+import java.util.*;
+
+class Employee implements Comparable<Employee> {
+    String name;
+    int id;
+    
+    Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    
+    public int compareTo(Employee e) {
+        return this.name.compareTo(e.name);
+    }
+    
+    public String toString() {
+        return id + " " + name;
+    }
+}
+
+public class Q3 {
+    public static void main(String[] args) {
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee(101, "Sagnik"));
+        employees.add(new Employee(102, "Amit"));
+        employees.add(new Employee(103, "Rahul"));
+        
+        Collections.sort(employees);
+        
+        for(Employee e : employees) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+
+102 Amit
+103 Rahul
+101 Sagnik
+
+Q4. Sort a list of Book objects by bookId in descending order using Comparable
+
+package day9_assignment;
+import java.util.*;
+
+class Book implements Comparable<Book> {
+    int bookId;
+    String title;
+    
+    Book(int bookId, String title) {
+        this.bookId = bookId;
+        this.title = title;
+    }
+    
+    public int compareTo(Book b) {
+        return b.bookId - this.bookId;
+    }
+    
+    public String toString() {
+        return bookId + " " + title;
+    }
+}
+
+public class Q4 {
+    public static void main(String[] args) {
+        List<Book> books = new ArrayList<>();
+        books.add(new Book(101, "Java Programming"));
+        books.add(new Book(103, "Python Basics"));
+        books.add(new Book(102, "C++ Guide"));
+        
+        Collections.sort(books);
+        
+        for(Book b : books) {
+            System.out.println(b);
+        }
+    }
+}
+Output:
+
+103 Python Basics
+102 C++ Guide
+101 Java Programming
+
+Q5. Implement a program that sorts a list of custom objects using Comparable
+
+package day9_assignment;
+import java.util.*;
+
+class Person implements Comparable<Person> {
+    String name;
+    int age;
+    
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    public int compareTo(Person p) {
+        return this.name.compareTo(p.name);
+    }
+    
+    public String toString() {
+        return name + " " + age;
+    }
+}
+
+public class Q5 {
+    public static void main(String[] args) {
+        List<Person> people = new ArrayList<>();
+        people.add(new Person("Rahul", 25));
+        people.add(new Person("Amit", 30));
+        people.add(new Person("Priya", 22));
+        
+        System.out.println("Before sorting:");
+        for(Person p : people) {
+            System.out.println(p);
+        }
+        
+        Collections.sort(people);
+        
+        System.out.println("\nAfter sorting:");
+        for(Person p : people) {
+            System.out.println(p);
+        }
+    }
+}
+Output:
+Before sorting:
+Rahul 25
+Amit 30
+Priya 22
+
+After sorting:
+Amit 30
+Priya 22
+Rahul 25
+
+Q6. Sort a list of students by marks (descending) using Comparator
+
+package day9_assignment;
+import java.util.*;
+
+class Student {
+    int rollNo;
+    String name;
+    int marks;
+    
+    Student(int rollNo, String name, int marks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.marks = marks;
+    }
+    
+    public String toString() {
+        return rollNo + " " + name + " " + marks;
+    }
+}
+
+public class Q6 {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(1, "Amit", 85));
+        students.add(new Student(2, "Rahul", 90));
+        students.add(new Student(3, "Priya", 78));
+        
+        Collections.sort(students, new Comparator<Student>() {
+            public int compare(Student s1, Student s2) {
+                return s2.marks - s1.marks;
+            }
+        });
+        
+        for(Student s : students) {
+            System.out.println(s);
+        }
+    }
+}
+Output:
+2 Rahul 90
+1 Amit 85
+3 Priya 78
+
+Q7. Create multiple sorting strategies for a Product class
+
+package day9_assignment;
+import java.util.*;
+
+class Product {
+    String name;
+    double price;
+    
+    Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+    
+    public String toString() {
+        return name + " " + price;
+    }
+}
+
+public class Q7 {
+    public static void main(String[] args) {
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("Laptop", 50000));
+        products.add(new Product("Mobile", 20000));
+        products.add(new Product("Tablet", 15000));
+        
+        System.out.println("Sorted by price ascending:");
+        Collections.sort(products, new Comparator<Product>() {
+            public int compare(Product p1, Product p2) {
+                return Double.compare(p1.price, p2.price);
+            }
+        });
+        for(Product p : products) {
+            System.out.println(p);
+        }
+        
+        System.out.println("\nSorted by price descending:");
+        Collections.sort(products, new Comparator<Product>() {
+            public int compare(Product p1, Product p2) {
+                return Double.compare(p2.price, p1.price);
+            }
+        });
+        for(Product p : products) {
+            System.out.println(p);
+        }
+        
+        System.out.println("\nSorted by name:");
+        Collections.sort(products, new Comparator<Product>() {
+            public int compare(Product p1, Product p2) {
+                return p1.name.compareTo(p2.name);
+            }
+        });
+        for(Product p : products) {
+            System.out.println(p);
+        }
+    }
+}
+Output:
+Sorted by price ascending:
+Tablet 15000.0
+Mobile 20000.0
+Laptop 50000.0
+
+Sorted by price descending:
+Laptop 50000.0
+Mobile 20000.0
+Tablet 15000.0
+
+Sorted by name:
+Laptop 50000.0
+Mobile 20000.0
+Tablet 15000.0
+
+Q8. Sort Employee objects by joining date using Comparator
+
+package day9_assignment;
+import java.util.*;
+
+class Employee {
+    String name;
+    String joiningDate;
+    
+    Employee(String name, String joiningDate) {
+        this.name = name;
+        this.joiningDate = joiningDate;
+    }
+    
+    public String toString() {
+        return name + " " + joiningDate;
+    }
+}
+
+public class Q8 {
+    public static void main(String[] args) {
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("Amit", "2023-01-15"));
+        employees.add(new Employee("Rahul", "2022-05-20"));
+        employees.add(new Employee("Priya", "2023-03-10"));
+        
+        Collections.sort(employees, new Comparator<Employee>() {
+            public int compare(Employee e1, Employee e2) {
+                return e1.joiningDate.compareTo(e2.joiningDate);
+            }
+        });
+        
+        for(Employee e : employees) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+Rahul 2022-05-20
+Amit 2023-01-15
+Priya 2023-03-10
+
+Q9. Sort a list of cities by population using Comparator
+
+package day9_assignment;
+import java.util.*;
+
+class City {
+    String name;
+    int population;
+    
+    City(String name, int population) {
+        this.name = name;
+        this.population = population;
+    }
+    
+    public String toString() {
+        return name + " " + population;
+    }
+}
+
+public class Q9 {
+    public static void main(String[] args) {
+        List<City> cities = new ArrayList<>();
+        cities.add(new City("Kolkata", 15000000));
+        cities.add(new City("Mumbai", 20000000));
+        cities.add(new City("Delhi", 18000000));
+        
+        Collections.sort(cities, new Comparator<City>() {
+            public int compare(City c1, City c2) {
+                return c2.population - c1.population;
+            }
+        });
+        
+        for(City c : cities) {
+            System.out.println(c);
+        }
+    }
+}
+Output:
+Mumbai 20000000
+Delhi 18000000
+Kolkata 1500000
+
+Q10. Use an anonymous inner class to sort a list of strings by length
+
+package day9_assignment;
+import java.util.*;
+
+public class Q10 {
+    public static void main(String[] args) {
+        List<String> strings = new ArrayList<>();
+        strings.add("Apple");
+        strings.add("Banana");
+        strings.add("Cherry");
+        strings.add("Date");
+        
+        Collections.sort(strings, new Comparator<String>() {
+            public int compare(String s1, String s2) {
+                return s1.length() - s2.length();
+            }
+        });
+        
+        for(String s : strings) {
+            System.out.println(s);
+        }
+    }
+}
+Output:
+Date
+Apple
+Banana
+Cherry
+
+Q11. Student implements Comparable to sort by name and Comparator to sort by marks
+
+package day9_assignment;
+import java.util.*;
+
+class Student implements Comparable<Student> {
+    int rollNo;
+    String name;
+    int marks;
+    
+    Student(int rollNo, String name, int marks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.marks = marks;
+    }
+    
+    public int compareTo(Student s) {
+        return this.name.compareTo(s.name);
+    }
+    
+    public String toString() {
+        return rollNo + " " + name + " " + marks;
+    }
+}
+
+public class Q11 {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(1, "Amit", 85));
+        students.add(new Student(2, "Rahul", 90));
+        students.add(new Student(3, "Priya", 78));
+        
+        System.out.println("Sorted by name (Comparable):");
+        Collections.sort(students);
+        for(Student s : students) {
+            System.out.println(s);
+        }
+        
+        System.out.println("\nSorted by marks (Comparator):");
+        Collections.sort(students, new Comparator<Student>() {
+            public int compare(Student s1, Student s2) {
+                return s2.marks - s1.marks;
+            }
+        });
+        for(Student s : students) {
+            System.out.println(s);
+        }
+    }
+}
+Output:
+Sorted by name (Comparable):
+1 Amit 85
+3 Priya 78
+2 Rahul 90
+
+Sorted by marks (Comparator):
+2 Rahul 90
+1 Amit 85
+3 Priya 78
+
+Q12. Sort Book objects using both Comparable (by ID) and Comparator (by title, then author)
+
+package day9_assignment;
+import java.util.*;
+
+class Book implements Comparable<Book> {
+    int id;
+    String title;
+    String author;
+    
+    Book(int id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
+    
+    public int compareTo(Book b) {
+        return this.id - b.id;
+    }
+    
+    public String toString() {
+        return id + " " + title + " " + author;
+    }
+}
+
+public class Q12 {
+    public static void main(String[] args) {
+        List<Book> books = new ArrayList<>();
+        books.add(new Book(3, "Java", "Amit"));
+        books.add(new Book(1, "Python", "Rahul"));
+        books.add(new Book(2, "C++", "Priya"));
+        
+        System.out.println("Sorted by ID (Comparable):");
+        Collections.sort(books);
+        for(Book b : books) {
+            System.out.println(b);
+        }
+        
+        System.out.println("\nSorted by title then author (Comparator):");
+        Collections.sort(books, new Comparator<Book>() {
+            public int compare(Book b1, Book b2) {
+                int titleCompare = b1.title.compareTo(b2.title);
+                if(titleCompare != 0) return titleCompare;
+                return b1.author.compareTo(b2.author);
+            }
+        });
+        for(Book b : books) {
+            System.out.println(b);
+        }
+    }
+}
+Output:
+Sorted by ID (Comparable):
+1 Python Rahul
+2 C++ Priya
+3 Java Amit
+
+Sorted by title then author (Comparator):
+2 C++ Priya
+3 Java Amit
+1 Python Rahul
+
+Q13. Menu-driven program to sort Employee objects
+
+package day9_assignment;
+import java.util.*;
+import java.io.*;
+
+class Employee {
+    String name;
+    double salary;
+    String department;
+    
+    Employee(String name, double salary, String department) {
+        this.name = name;
+        this.salary = salary;
+        this.department = department;
+    }
+    
+    public String toString() {
+        return name + " " + salary + " " + department;
+    }
+}
+
+public class Q13 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("Amit", 50000, "IT"));
+        employees.add(new Employee("Rahul", 60000, "HR"));
+        employees.add(new Employee("Priya", 45000, "Finance"));
+        
+        System.out.println("1. Sort by name");
+        System.out.println("2. Sort by salary");
+        System.out.println("3. Sort by department");
+        System.out.print("Enter your choice: ");
+        int choice = Integer.parseInt(br.readLine());
+        
+        switch(choice) {
+            case 1:
+                Collections.sort(employees, new Comparator<Employee>() {
+                    public int compare(Employee e1, Employee e2) {
+                        return e1.name.compareTo(e2.name);
+                    }
+                });
+                break;
+            case 2:
+                Collections.sort(employees, new Comparator<Employee>() {
+                    public int compare(Employee e1, Employee e2) {
+                        return Double.compare(e1.salary, e2.salary);
+                    }
+                });
+                break;
+            case 3:
+                Collections.sort(employees, new Comparator<Employee>() {
+                    public int compare(Employee e1, Employee e2) {
+                        return e1.department.compareTo(e2.department);
+                    }
+                });
+                break;
+            default:
+                System.out.println("Invalid choice");
+                return;
+        }
+        
+        for(Employee e : employees) {
+            System.out.println(e);
+        }
+    }
+}
+Output 
+Priya 45000.0 Finance
+Amit 50000.0 IT
+Rahul 60000.0 HR
+
+Q14. Use Comparator.comparing() with method references
+
+package day9_assignment;
+import java.util.*;
+
+class Person {
+    String name;
+    int age;
+    
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    String getName() { return name; }
+    int getAge() { return age; }
+    
+    public String toString() {
+        return name + " " + age;
+    }
+}
+
+public class Q14 {
+    public static void main(String[] args) {
+        List<Person> people = new ArrayList<>();
+        people.add(new Person("Rahul", 25));
+        people.add(new Person("Amit", 30));
+        people.add(new Person("Priya", 22));
+        
+        Collections.sort(people, Comparator.comparing(Person::getName));
+        
+        for(Person p : people) {
+            System.out.println(p);
+        }
+    }
+}
+Output:
+Amit 30
+Priya 22
+Rahul 25
+
+Q15. Use TreeSet with a custom comparator to sort persons by age
+
+package day9_assignment;
+import java.util.*;
+
+class Person {
+    String name;
+    int age;
+    
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    public String toString() {
+        return name + " " + age;
+    }
+}
+
+public class Q15 {
+    public static void main(String[] args) {
+        Set<Person> people = new TreeSet<>(new Comparator<Person>() {
+            public int compare(Person p1, Person p2) {
+                return p1.age - p2.age;
+            }
+        });
+        
+        people.add(new Person("Rahul", 25));
+        people.add(new Person("Amit", 30));
+        people.add(new Person("Priya", 22));
+        
+        for(Person p : people) {
+            System.out.println(p);
+        }
+    }
+}
+Output:
+Priya 22
+Rahul 25
+Amit 30
+
+File Handling Questions
+
+Q1. Create and Write to a File
+
+package day9_assignment;
+import java.io.*;
+
+public class Q1 {
+    public static void main(String[] args) {
+        try {
+            FileWriter fw = new FileWriter("student.txt");
+            fw.write("Amit\n");
+            fw.write("Rahul\n");
+            fw.write("Priya\n");
+            fw.write("Sagnik\n");
+            fw.write("Ananya\n");
+            fw.close();
+            System.out.println("File written successfully");
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+File written successfully
+
+Q2. Read from a File
+
+package day9_assignment;
+import java.io.*;
+
+public class Q2 {
+    public static void main(String[] args) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("student.txt"));
+            String line;
+            while((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+            br.close();
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+Amit
+Rahul
+Priya
+Sagnik
+Ananya
+
+Q3. Append Data to a File
+
+package day9_assignment;
+import java.io.*;
+
+public class Q3 {
+    public static void main(String[] args) {
+        try {
+            FileWriter fw = new FileWriter("student.txt", true);
+            fw.write("New Student\n");
+            fw.close();
+            System.out.println("Data appended successfully");
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+Output
+Data appended successfully
+
+Q4. Count Words and Lines
+
+package day9_assignment;
+import java.io.*;
+
+public class Q4 {
+    public static void main(String[] args) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("notes.txt"));
+            String line;
+            int lineCount = 0;
+            int wordCount = 0;
+            
+            while((line = br.readLine()) != null) {
+                lineCount++;
+                String[] words = line.split(" ");
+                wordCount += words.length;
+            }
+            
+            br.close();
+            System.out.println("Lines: " + lineCount);
+            System.out.println("Words: " + wordCount);
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+Lines: 5
+Words: 25
+
+Q5. Copy Contents from One File to Another
+
+package day9_assignment;
+import java.io.*;
+
+public class Q5 {
+    public static void main(String[] args) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("source.txt"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("destination.txt"));
+            
+            String line;
+            while((line = br.readLine()) != null) {
+                bw.write(line);
+                bw.newLine();
+            }
+            
+            br.close();
+            bw.close();
+            System.out.println("File copied successfully");
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+File copied successfully
+
+Q6. Check if a File Exists and Display Properties
+
+package day9_assignment;
+import java.io.*;
+
+public class Q6 {
+    public static void main(String[] args) {
+        File f = new File("report.txt");
+        if(f.exists()) {
+            System.out.println("Absolute path: " + f.getAbsolutePath());
+            System.out.println("File name: " + f.getName());
+            System.out.println("Writable: " + f.canWrite());
+            System.out.println("Readable: " + f.canRead());
+            System.out.println("File size: " + f.length() + " bytes");
+        } else {
+            System.out.println("File not found");
+        }
+    }
+}
+Output:
+Absolute path: C:\path\to\report.txt
+File name: report.txt
+Writable: true
+Readable: true
+File size: 1024 bytes
+
+Q7. Create a File and Accept User Input
+
+package day9_assignment;
+import java.io.*;
+import java.util.*;
+
+public class Q7 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        FileWriter fw = new FileWriter("userinput.txt");
+        
+        System.out.println("Enter text (type 'exit' to stop):");
+        String input;
+        while(!(input = br.readLine()).equalsIgnoreCase("exit")) {
+            fw.write(input + "\n");
+        }
+        
+        fw.close();
+        System.out.println("Input saved to file");
+    }
+}
+Output:
+Enter text (type 'exit' to stop):
+Hello
+This is user input
+exit
+Input saved to file
+
+Q8. Reverse File Content
+
+package day9_assignment;
+import java.io.*;
+import java.util.*;
+
+public class Q8 {
+    public static void main(String[] args) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("data.txt"));
+            List<String> lines = new ArrayList<>();
+            String line;
+            
+            while((line = br.readLine()) != null) {
+                lines.add(line);
+            }
+            br.close();
+            
+            Collections.reverse(lines);
+            
+            BufferedWriter bw = new BufferedWriter(new FileWriter("reversed.txt"));
+            for(String l : lines) {
+                bw.write(l);
+                bw.newLine();
+            }
+            bw.close();
+            
+            System.out.println("File reversed successfully");
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+File reversed successfully
+
+Q9. Store Objects in a File using Serialization
+
+package day9_assignment;
+import java.io.*;
+
+class Student implements Serializable {
+    int id;
+    String name;
+    int marks;
+    
+    Student(int id, String name, int marks) {
+        this.id = id;
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+public class Q9 {
+    public static void main(String[] args) {
+        try {
+            Student s = new Student(101, "Amit", 85);
+            FileOutputStream f = new FileOutputStream("student.ser");
+            ObjectOutputStream o = new ObjectOutputStream(f);
+            o.writeObject(s);
+            f.close();
+            o.close();
+            System.out.println("Object serialized successfully");
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+Object serialized successfully
+
+Q10. Read Serialized Object from File
+
+package day9_assignment;
+import java.io.*;
+
+public class Q10 {
+    public static void main(String[] args) {
+        try {
+            FileInputStream f = new FileInputStream("student.ser");
+            ObjectInputStream o = new ObjectInputStream(f);
+            Student s = (Student)o.readObject();
+            System.out.println("ID: " + s.id);
+            System.out.println("Name: " + s.name);
+            System.out.println("Marks: " + s.marks);
+            f.close();
+            o.close();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+ID: 101
+Name: Amit
+Marks: 85
+
+Q11. Print All Files in a Directory
+
+package day9_assignment;
+import java.io.*;
+
+public class Q11 {
+    public static void main(String[] args) {
+        File dir = new File("C:\\path\\to\\directory");
+        File[] files = dir.listFiles();
+        
+        if(files != null) {
+            for(File f : files) {
+                if(f.isFile()) {
+                    System.out.println(f.getName());
+                }
+            }
+        }
+    }
+}
+Output:
+file1.txt
+file2.jpg
+document.pdf
+
+Q12. Delete a File
+
+package day9_assignment;
+import java.io.*;
+
+public class Q12 {
+    public static void main(String[] args) {
+        File f = new File("file_to_delete.txt");
+        if(f.exists()) {
+            if(f.delete()) {
+                System.out.println("File deleted successfully");
+            } else {
+                System.out.println("Failed to delete file");
+            }
+        } else {
+            System.out.println("File not found");
+        }
+    }
+}
+Output:
+File deleted successfully
+
+Q13. Word Search in a File
+
+package day9_assignment;
+import java.io.*;
+
+public class Q13 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter word to search: ");
+        String word = br.readLine();
+        
+        BufferedReader fileReader = new BufferedReader(new FileReader("notes.txt"));
+        String line;
+        boolean found = false;
+        
+        while((line = fileReader.readLine()) != null) {
+            if(line.contains(word)) {
+                found = true;
+                break;
+            }
+        }
+        
+        fileReader.close();
+        System.out.println("Word " + (found ? "found" : "not found"));
+    }
+}
+Output:
+Enter word to search: Java
+Word found
+
+Q14. Replace a Word in a File
+
+package day9_assignment;
+import java.io.*;
+
+public class Q14 {
+    public static void main(String[] args) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("story.txt"));
+            StringBuilder content = new StringBuilder();
+            String line;
+            
+            while((line = br.readLine()) != null) {
+                content.append(line.replace("Java", "Python")).append("\n");
+            }
+            br.close();
+            
+            BufferedWriter bw = new BufferedWriter(new FileWriter("updated_story.txt"));
+            bw.write(content.toString());
+            bw.close();
+            
+            System.out.println("Word replaced successfully");
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
+}
+Output:
+Word replaced successfully
