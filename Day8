@@ -1,0 +1,1341 @@
+Collections - List (ArrayList)
+
+1. Search an Element
+
+package day8_assignment;
+
+import java.util.*;
+
+public class ArrayListSearch {
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(40);
+        list.add(50);
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number to search:");
+        int num = sc.nextInt();
+
+        if (list.contains(num)) {
+            System.out.println("Number found at index: " + list.indexOf(num));
+        } else {
+            System.out.println("Number not found");
+        }
+    }
+}
+Output:
+Enter a number to search:
+30
+Number found at index: 2
+
+2. Remove Specific Element
+
+package day8_assignment;
+
+import java.util.ArrayList;
+
+public class ArrayListRemove {
+    public static void main(String[] args) {
+        ArrayList<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Mango");
+        fruits.add("Grapes");
+
+        System.out.println("Original list: " + fruits);
+        fruits.remove("Orange");
+        System.out.println("After removal: " + fruits);
+    }
+}
+Output
+Original list: [Apple, Banana, Orange, Mango, Grapes]
+After removal: [Apple, Banana, Mango, Grapes]
+
+3. Sort Elements
+
+package day8_assignment;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ArrayListSort {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(45);
+        numbers.add(12);
+        numbers.add(78);
+        numbers.add(23);
+        numbers.add(56);
+        numbers.add(34);
+        numbers.add(89);
+
+        System.out.println("Before sorting: " + numbers);
+        Collections.sort(numbers);
+        System.out.println("After sorting: " + numbers);
+    }
+}
+Output:
+Before sorting: [45, 12, 78, 23, 56, 34, 89]
+After sorting: [12, 23, 34, 45, 56, 78, 89]
+
+4. Reverse the ArrayList
+
+package day8_assignment;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ArrayListReverse {
+    public static void main(String[] args) {
+        ArrayList<Character> chars = new ArrayList<>();
+        chars.add('A');
+        chars.add('B');
+        chars.add('C');
+        chars.add('D');
+        chars.add('E');
+
+        System.out.println("Original list: " + chars);
+        Collections.reverse(chars);
+        System.out.println("Reversed list: " + chars);
+    }
+}
+Output:
+
+Original list: [A, B, C, D, E]
+Reversed list: [E, D, C, B, A]
+
+5. Update an Element
+
+package day8_assignment;
+
+import java.util.ArrayList;
+
+public class ArrayListUpdate {
+    public static void main(String[] args) {
+        ArrayList<String> subjects = new ArrayList<>();
+        subjects.add("Math");
+        subjects.add("Science");
+        subjects.add("History");
+        subjects.add("English");
+
+        System.out.println("Before update: " + subjects);
+        subjects.set(0, "Statistics");
+        System.out.println("After update: " + subjects);
+    }
+}
+Output:
+
+Before update: [Math, Science, History, English]
+After update: [Statistics, Science, History, English]
+
+6. Remove All Elements
+
+package day8_assignment;
+
+import java.util.ArrayList;
+
+public class ArrayListClear {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+
+        System.out.println("Size before clear: " + numbers.size());
+        numbers.clear();
+        System.out.println("Size after clear: " + numbers.size());
+    }
+}
+Output:
+
+Size before clear: 4
+Size after clear: 0
+
+7. Iterate using Iterator
+
+package day8_assignment;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ArrayListIterator {
+    public static void main(String[] args) {
+        ArrayList<String> cities = new ArrayList<>();
+        cities.add("New York");
+        cities.add("London");
+        cities.add("Tokyo");
+        cities.add("Paris");
+
+        Iterator<String> it = cities.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+    }
+}
+Output:
+
+New York
+London
+Tokyo
+Paris
+
+8. Store Custom Objects
+
+package day8_assignment;
+
+import java.util.ArrayList;
+
+class Student {
+    int id;
+    String name;
+    double marks;
+
+    public Student(int id, String name, double marks) {
+        this.id = id;
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+public class ArrayListCustomObjects {
+    public static void main(String[] args) {
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(new Student(1, "Alice", 85.5));
+        students.add(new Student(2, "Bob", 76.0));
+        students.add(new Student(3, "Charlie", 92.5));
+
+        for (Student s : students) {
+            System.out.println("ID: " + s.id + ", Name: " + s.name + ", Marks: " + s.marks);
+        }
+    }
+}
+Output:
+
+
+ID: 1, Name: Alice, Marks: 85.5
+ID: 2, Name: Bob, Marks: 76.0
+ID: 3, Name: Charlie, Marks: 92.5
+
+9. Copy One ArrayList to Another
+
+package day8_assignment;
+
+import java.util.ArrayList;
+
+public class ArrayListCopy {
+    public static void main(String[] args) {
+        ArrayList<String> list1 = new ArrayList<>();
+        list1.add("One");
+        list1.add("Two");
+        list1.add("Three");
+
+        ArrayList<String> list2 = new ArrayList<>();
+        list2.addAll(list1);
+
+        System.out.println("Original list: " + list1);
+        System.out.println("Copied list: " + list2);
+    }
+}
+Output:
+Original list: [One, Two, Three]
+Copied list: [One, Two, Three]
+
+List (LinkedList)
+
+1. Create and Display a LinkedList
+
+package day8_assignment;
+
+import java.util.LinkedList;
+
+public class LinkedListCreate {
+    public static void main(String[] args) {
+        LinkedList<String> colors = new LinkedList<>();
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Purple");
+
+        for (String color : colors) {
+            System.out.println(color);
+        }
+    }
+}
+Output:
+
+Red
+Green
+Blue
+Yellow
+Purple
+
+2. Add Elements at First and Last Position
+
+package day8_assignment;
+
+import java.util.LinkedList;
+
+public class LinkedListAddFirstLast {
+    public static void main(String[] args) {
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+
+        numbers.addFirst(10);
+        numbers.addLast(50);
+
+        System.out.println(numbers);
+    }
+}
+Output:
+
+[10, 20, 30, 40, 50]
+
+3. Insert Element at Specific Position
+
+package day8_assignment;
+
+import java.util.LinkedList;
+
+public class LinkedListInsert {
+    public static void main(String[] args) {
+        LinkedList<String> names = new LinkedList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("Eve");
+
+        System.out.println("Before insertion: " + names);
+        names.add(2, "David");
+        System.out.println("After insertion: " + names);
+    }
+}
+Output:
+
+Before insertion: [Alice, Bob, Charlie, Eve]
+After insertion: [Alice, Bob, David, Charlie, Eve]
+
+4. Remove Elements
+
+package day8_assignment;
+
+import java.util.LinkedList;
+
+public class LinkedListRemove {
+    public static void main(String[] args) {
+        LinkedList<String> animals = new LinkedList<>();
+        animals.add("Lion");
+        animals.add("Tiger");
+        animals.add("Elephant");
+        animals.add("Giraffe");
+        animals.add("Zebra");
+
+        System.out.println("Original list: " + animals);
+        animals.removeFirst();
+        System.out.println("After removing first: " + animals);
+        animals.removeLast();
+        System.out.println("After removing last: " + animals);
+        animals.remove("Elephant");
+        System.out.println("After removing Elephant: " + animals);
+    }
+}
+Output:
+
+Original list: [Lion, Tiger, Elephant, Giraffe, Zebra]
+After removing first: [Tiger, Elephant, Giraffe, Zebra]
+After removing last: [Tiger, Elephant, Giraffe]
+After removing Elephant: [Tiger, Giraffe]
+
+5. Search for an Element
+
+package day8_assignment;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class LinkedListSearch {
+    public static void main(String[] args) {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Orange");
+        list.add("Mango");
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a fruit to search:");
+        String fruit = sc.nextLine();
+
+        if (list.contains(fruit)) {
+            System.out.println("Fruit found in the list");
+        } else {
+            System.out.println("Fruit not found");
+        }
+    }
+}
+Output:
+
+Enter a fruit to search:
+Orange
+Fruit found in the list
+
+6. Iterate using ListIterator
+
+package day8_assignment;
+
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListListIterator {
+    public static void main(String[] args) {
+        LinkedList<String> cities = new LinkedList<>();
+        cities.add("New York");
+        cities.add("London");
+        cities.add("Tokyo");
+        cities.add("Paris");
+
+        ListIterator<String> it = cities.listIterator();
+        System.out.println("Forward direction:");
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+
+        System.out.println("Backward direction:");
+        while (it.hasPrevious()) {
+            System.out.println(it.previous());
+        }
+    }
+}
+Output:
+Forward direction:
+New York
+London
+Tokyo
+Paris
+Backward direction:
+Paris
+Tokyo
+London
+New York
+
+7. Sort a LinkedList
+
+package day8_assignment;
+
+import java.util.Collections;
+import java.util.LinkedList;
+
+public class LinkedListSort {
+    public static void main(String[] args) {
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(45);
+        numbers.add(12);
+        numbers.add(78);
+        numbers.add(23);
+
+        System.out.println("Before sorting: " + numbers);
+        Collections.sort(numbers);
+        System.out.println("After sorting: " + numbers);
+    }
+}
+Output:
+Before sorting: [45, 12, 78, 23]
+After sorting: [12, 23, 45, 78]
+
+8. Convert LinkedList to ArrayList
+
+package day8_assignment;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class LinkedListToArrayList {
+    public static void main(String[] args) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("One");
+        linkedList.add("Two");
+        linkedList.add("Three");
+
+        ArrayList<String> arrayList = new ArrayList<>(linkedList);
+
+        System.out.println("LinkedList: " + linkedList);
+        System.out.println("ArrayList: " + arrayList);
+    }
+}
+Output:
+LinkedList: [One, Two, Three]
+ArrayList: [One, Two, Three]
+
+9. Store Custom Objects in LinkedList
+
+package day8_assignment;
+
+import java.util.LinkedList;
+
+class Book {
+    int id;
+    String title;
+    String author;
+
+    public Book(int id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
+}
+
+public class LinkedListCustomObjects {
+    public static void main(String[] args) {
+        LinkedList<Book> books = new LinkedList<>();
+        books.add(new Book(1, "Book1", "Author1"));
+        books.add(new Book(2, "Book2", "Author2"));
+        books.add(new Book(3, "Book3", "Author3"));
+
+        for (Book b : books) {
+            System.out.println("ID: " + b.id + ", Title: " + b.title + ", Author: " + b.author);
+        }
+    }
+}
+Output:
+ID: 1, Title: Book1, Author: Author1
+ID: 2, Title: Book2, Author: Author2
+ID: 3, Title: Book3, Author: Author3
+
+10. Clone a LinkedList
+
+package day8_assignment;
+
+import java.util.LinkedList;
+
+public class LinkedListClone {
+    public static void main(String[] args) {
+        LinkedList<Integer> original = new LinkedList<>();
+        original.add(10);
+        original.add(20);
+        original.add(30);
+
+        LinkedList<Integer> clone = (LinkedList<Integer>) original.clone();
+
+        System.out.println("Original list: " + original);
+        System.out.println("Cloned list: " + clone);
+    }
+}
+Output:
+Original list: [10, 20, 30]
+Cloned list: [10, 20, 30]
+
+Vector
+
+1. Basic Vector Operations
+
+package day8_assignment;
+
+import java.util.Vector;
+
+public class VectorOperations {
+    public static void main(String[] args) {
+        Vector<Integer> vec = new Vector<>();
+        vec.add(10);
+        vec.add(20);
+        vec.add(30);
+        vec.add(40);
+        vec.add(50);
+
+        vec.add(2, 25);
+        vec.remove(1);
+
+        System.out.println("Vector elements: " + vec);
+    }
+}
+Output:
+
+Vector elements: [10, 25, 30, 40, 50]
+
+2. String Vector Operations
+
+package day8_assignment;
+
+import java.util.Vector;
+
+public class VectorStringOperations {
+    public static void main(String[] args) {
+        Vector<String> names = new Vector<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+
+        System.out.println("Contains 'Bob': " + names.contains("Bob"));
+        names.set(1, "Robert");
+        names.clear();
+        System.out.println("Size after clear: " + names.size());
+    }
+}
+Output:
+
+Contains 'Bob': true
+Size after clear: 0
+
+3. Copy and Compare Vectors
+
+package day8_assignment;
+
+import java.util.Vector;
+
+public class VectorCopyCompare {
+    public static void main(String[] args) {
+        Vector<Integer> vec1 = new Vector<>();
+        vec1.add(10);
+        vec1.add(20);
+        vec1.add(30);
+
+        Vector<Integer> vec2 = new Vector<>(vec1);
+
+        System.out.println("Are vectors equal? " + vec1.equals(vec2));
+    }
+}
+Output:
+Are vectors equal? true
+
+4. Vector Sum Method
+
+package day8_assignment;
+
+import java.util.Vector;
+
+public class VectorSum {
+    public static int sumVector(Vector<Integer> vec) {
+        int sum = 0;
+        for (int num : vec) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Vector<Integer> numbers = new Vector<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+
+        System.out.println("Sum: " + sumVector(numbers));
+    }
+}
+O/P:
+
+Sum: 100
+
+Stack
+
+1. Basic Stack Operations
+
+package day8_assignment;
+
+import java.util.Stack;
+
+public class StackOperations {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.push(40);
+        stack.push(50);
+
+        System.out.println("Top element: " + stack.peek());
+        stack.pop();
+        System.out.println("After pop: " + stack);
+        System.out.println("Is stack empty? " + stack.isEmpty());
+    }
+}
+Output:
+
+Top element: 50
+After pop: [10, 20, 30, 40]
+Is stack empty? false
+
+2. Reverse a String using Stack
+
+package day8_assignment;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class StackReverseString {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string:");
+        String input = sc.nextLine();
+
+        Stack<Character> stack = new Stack<>();
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        StringBuilder reversed = new StringBuilder();
+        while (!stack.isEmpty()) {
+            reversed.append(stack.pop());
+        }
+
+        System.out.println("Reversed string: " + reversed);
+    }
+}
+Output:
+
+Enter a string:
+hello
+Reversed string: olleh
+
+3. Balanced Parentheses Check
+
+package day8_assignment;
+
+import java.util.Stack;
+
+public class StackBalancedParentheses {
+    public static void main(String[] args) {
+        String expression = "(a+b)*(c-d)";
+        Stack<Character> stack = new Stack<>();
+        boolean balanced = true;
+
+        for (char c : expression.toCharArray()) {
+            if (c == '(') {
+                stack.push(c);
+            } else if (c == ')') {
+                if (stack.isEmpty()) {
+                    balanced = false;
+                    break;
+                }
+                stack.pop();
+            }
+        }
+
+        if (balanced && stack.isEmpty()) {
+            System.out.println("Valid expression");
+        } else {
+            System.out.println("Invalid expression");
+        }
+    }
+}
+Output:
+
+Valid expression
+
+4. Decimal to Binary using Stack
+
+package day8_assignment;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class StackDecimalToBinary {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a decimal number:");
+        int decimal = sc.nextInt();
+
+        Stack<Integer> stack = new Stack<>();
+        while (decimal > 0) {
+            stack.push(decimal % 2);
+            decimal /= 2;
+        }
+
+        StringBuilder binary = new StringBuilder();
+        while (!stack.isEmpty()) {
+            binary.append(stack.pop());
+        }
+
+        System.out.println("Binary equivalent: " + binary);
+    }
+}
+Output:
+Enter a decimal number:
+13
+Binary equivalent: 1101
+
+HashSet
+
+1. Basic HashSet Operations
+
+package day8_assignment;
+
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class HashSetOperations {
+    public static void main(String[] args) {
+        HashSet<String> cities = new HashSet<>();
+        cities.add("New York");
+        cities.add("London");
+        cities.add("Tokyo");
+        cities.add("Paris");
+        cities.add("Berlin");
+
+        cities.add("London");
+
+        Iterator<String> it = cities.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+    }
+}
+Output
+New York
+London
+Tokyo
+Paris
+Berlin
+
+2. HashSet Element Operations
+
+package day8_assignment;
+
+import java.util.HashSet;
+
+public class HashSetElementOperations {
+    public static void main(String[] args) {
+        HashSet<String> cities = new HashSet<>();
+        cities.add("New York");
+        cities.add("London");
+        cities.add("Tokyo");
+
+        cities.remove("London");
+        System.out.println("Contains Tokyo? " + cities.contains("Tokyo"));
+        cities.clear();
+        System.out.println("Size after clear: " + cities.size());
+    }
+}
+Output:
+Contains Tokyo? true
+Size after clear: 0
+
+3. Max Element in HashSet
+
+package day8_assignment;
+
+import java.util.HashSet;
+import java.util.Collections;
+
+public class HashSetMaxElement {
+    public static int getMax(HashSet<Integer> set) {
+        return Collections.max(set);
+    }
+
+    public static void main(String[] args) {
+        HashSet<Integer> numbers = new HashSet<>();
+        numbers.add(10);
+        numbers.add(50);
+        numbers.add(30);
+        numbers.add(20);
+
+        System.out.println("Max element: " + getMax(numbers));
+    }
+}
+Output:
+
+Max element: 50
+
+LinkedHashSet
+
+1. Basic LinkedHashSet Operations
+
+package day8_assignment;
+
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetOperations {
+    public static void main(String[] args) {
+        LinkedHashSet<Integer> numbers = new LinkedHashSet<>();
+        numbers.add(10);
+        numbers.add(5);
+        numbers.add(20);
+        numbers.add(15);
+        numbers.add(5);
+
+        System.out.println(numbers);
+    }
+}
+Output:
+
+[10, 5, 20, 15]
+
+2. LinkedHashSet with Custom Objects
+
+package day8_assignment;
+
+import java.util.LinkedHashSet;
+
+class Student {
+    int id;
+    String name;
+
+    public Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Student student = (Student) obj;
+        return id == student.id;
+    }
+
+    public int hashCode() {
+        return id;
+    }
+}
+
+public class LinkedHashSetCustomObjects {
+    public static void main(String[] args) {
+        LinkedHashSet<Student> students = new LinkedHashSet<>();
+        students.add(new Student(1, "Alice"));
+        students.add(new Student(2, "Bob"));
+        students.add(new Student(1, "Alice"));
+
+        System.out.println("Number of students: " + students.size());
+    }
+}
+Output:
+
+Number of students: 2
+
+3. Merge Two LinkedHashSets
+
+package day8_assignment;
+
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetMerge {
+    public static void main(String[] args) {
+        LinkedHashSet<String> set1 = new LinkedHashSet<>();
+        set1.add("Apple");
+        set1.add("Banana");
+
+        LinkedHashSet<String> set2 = new LinkedHashSet<>();
+        set2.add("Orange");
+        set2.add("Grapes");
+
+        set1.addAll(set2);
+        System.out.println("Merged set: " + set1);
+    }
+}
+Output:
+Merged set: [Apple, Banana, Orange, Grapes]
+TreeSet
+
+1. Basic TreeSet Operations
+
+package day8_assignment;
+
+import java.util.TreeSet;
+
+public class TreeSetOperations {
+    public static void main(String[] args) {
+        TreeSet<String> countries = new TreeSet<>();
+        countries.add("India");
+        countries.add("USA");
+        countries.add("UK");
+        countries.add("Japan");
+        countries.add("Australia");
+
+        System.out.println("Sorted countries: " + countries);
+    }
+}
+Output:
+Sorted countries: [Australia, India, Japan, UK, USA]
+
+2. TreeSet Element Operations
+
+package day8_assignment;
+
+import java.util.TreeSet;
+
+public class TreeSetElementOperations {
+    public static void main(String[] args) {
+        TreeSet<Integer> numbers = new TreeSet<>();
+        numbers.add(10);
+        numbers.add(50);
+        numbers.add(30);
+        numbers.add(20);
+
+        System.out.println("First: " + numbers.first());
+        System.out.println("Last: " + numbers.last());
+        System.out.println("Lower than 25: " + numbers.lower(25));
+        System.out.println("Higher than 25: " + numbers.higher(25));
+    }
+}
+Output:
+First: 10
+Last: 50
+Lower than 25: 20
+Higher than 25: 30
+
+3. TreeSet with Custom Comparator
+
+package day8_assignment;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+
+public class TreeSetCustomComparator {
+    public static void main(String[] args) {
+        TreeSet<String> reverseSet = new TreeSet<>(Comparator.reverseOrder());
+        reverseSet.add("Apple");
+        reverseSet.add("Banana");
+        reverseSet.add("Orange");
+
+        System.out.println("Reverse order: " + reverseSet);
+    }
+}
+Output:
+Reverse order: [Orange, Banana, Apple]
+
+Queue
+
+1. Bank Queue Simulation
+
+package day8_assignment;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class BankQueueSimulation {
+    public static void main(String[] args) {
+        Queue<String> customers = new LinkedList<>();
+        customers.add("Customer1");
+        customers.add("Customer2");
+        customers.add("Customer3");
+        customers.add("Customer4");
+        customers.add("Customer5");
+
+        while (!customers.isEmpty()) {
+            System.out.println("Serving: " + customers.poll());
+            System.out.println("Remaining customers: " + customers);
+        }
+    }
+}
+Output:
+Serving: Customer1
+Remaining customers: [Customer2, Customer3, Customer4, Customer5]
+Serving: Customer2
+Remaining customers: [Customer3, Customer4, Customer5]
+Serving: Customer3
+Remaining customers: [Customer4, Customer5]
+Serving: Customer4
+Remaining customers: [Customer5]
+Serving: Customer5
+Remaining customers: []
+
+2. Task Manager
+
+package day8_assignment;
+
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+public class TaskManager {
+    public static void main(String[] args) {
+        Queue<String> tasks = new PriorityQueue<>();
+        tasks.add("Task3");
+        tasks.add("Task1");
+        tasks.add("Task2");
+
+        System.out.println("Next task: " + tasks.peek());
+        tasks.poll();
+        System.out.println("After completion: " + tasks);
+    }
+}
+Output:
+Next task: Task1
+After completion: [Task2, Task3]
+
+3. Even Numbers from Queue
+
+package day8_assignment;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueEvenNumbers {
+    public static void main(String[] args) {
+        Queue<Integer> numbers = new LinkedList<>();
+        numbers.add(10);
+        numbers.add(15);
+        numbers.add(20);
+        numbers.add(25);
+        numbers.add(30);
+
+        System.out.println("Even numbers:");
+        for (int num : numbers) {
+            if (num % 2 == 0) {
+                System.out.println(num);
+            }
+        }
+    }
+}
+Output:
+Even numbers:
+10
+20
+30
+
+PriorityQueue
+
+1. Hospital Emergency Queue
+
+package day8_assignment;
+
+import java.util.PriorityQueue;
+
+class Patient implements Comparable<Patient> {
+    String name;
+    int severityLevel;
+
+    public Patient(String name, int severityLevel) {
+        this.name = name;
+        this.severityLevel = severityLevel;
+    }
+
+    public int compareTo(Patient other) {
+        return Integer.compare(other.severityLevel, this.severityLevel);
+    }
+}
+
+public class HospitalEmergencyQueue {
+    public static void main(String[] args) {
+        PriorityQueue<Patient> queue = new PriorityQueue<>();
+        queue.add(new Patient("Patient1", 3));
+        queue.add(new Patient("Patient2", 5));
+        queue.add(new Patient("Patient3", 1));
+        queue.add(new Patient("Patient4", 4));
+
+        while (!queue.isEmpty()) {
+            Patient p = queue.poll();
+            System.out.println("Treating: " + p.name + " (Severity: " + p.severityLevel + ")");
+        }
+    }
+}
+Output:
+
+Treating: Patient2 (Severity: 5)
+Treating: Patient4 (Severity: 4)
+Treating: Patient1 (Severity: 3)
+Treating: Patient3 (Severity: 1)
+
+2. Print Jobs Priority
+
+package day8_assignment;
+
+import java.util.PriorityQueue;
+
+public class PrintJobPriority {
+    public static void main(String[] args) {
+        PriorityQueue<String> printJobs = new PriorityQueue<>((a, b) -> {
+            int priorityA = Integer.parseInt(a.split(":")[1]);
+            int priorityB = Integer.parseInt(b.split(":")[1]);
+            return Integer.compare(priorityB, priorityA);
+        });
+
+        printJobs.add("Document1:3");
+        printJobs.add("Document2:1");
+        printJobs.add("Document3:5");
+        printJobs.add("Document4:2");
+
+        while (!printJobs.isEmpty()) {
+            System.out.println("Printing: " + printJobs.poll());
+        }
+    }
+}
+Output:
+Printing: Document3:5
+Printing: Document1:3
+Printing: Document4:2
+Printing: Document2:1
+
+3. Merge Two PriorityQueues
+
+package day8_assignment;
+
+import java.util.PriorityQueue;
+
+public class MergePriorityQueues {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+        pq1.add(10);
+        pq1.add(30);
+        pq1.add(20);
+
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+        pq2.add(40);
+        pq2.add(50);
+        pq2.add(15);
+
+        PriorityQueue<Integer> merged = new PriorityQueue<>(pq1);
+        merged.addAll(pq2);
+
+        System.out.println("Merged queue:");
+        while (!merged.isEmpty()) {
+            System.out.println(merged.poll());
+        }
+    }
+}
+Output:
+Merged queue:
+10
+15
+20
+30
+40
+50
+
+Deque
+
+1. Palindrome Checker
+
+package day8_assignment;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+public class PalindromeChecker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string:");
+        String input = sc.nextLine();
+
+        Deque<Character> deque = new ArrayDeque<>();
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
+        }
+
+        boolean isPalindrome = true;
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Is palindrome? " + isPalindrome);
+    }
+}
+Output:
+Enter a string:
+madam
+Is palindrome? true
+
+2. Double-ended Order System
+
+package day8_assignment;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class DoubleEndedOrderSystem {
+    public static void main(String[] args) {
+        Deque<String> orders = new ArrayDeque<>();
+        orders.addFirst("Order1");
+        orders.addLast("Order2");
+        orders.addFirst("Order3");
+        orders.addLast("Order4");
+
+        System.out.println("Orders: " + orders);
+        System.out.println("Processed first: " + orders.removeFirst());
+        System.out.println("Processed last: " + orders.removeLast());
+        System.out.println("Remaining orders: " + orders);
+    }
+}
+Output:
+Orders: [Order3, Order1, Order2, Order4]
+Processed first: Order3
+Processed last: Order4
+Remaining orders: [Order1, Order2]
+
+3. Browser History Simulation
+
+package day8_assignment;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+public class BrowserHistory {
+    public static void main(String[] args) {
+        Deque<String> backHistory = new ArrayDeque<>();
+        Deque<String> forwardHistory = new ArrayDeque<>();
+        Scanner sc = new Scanner(System.in);
+        String currentPage = null;
+
+        while (true) {
+            System.out.println("\nCurrent page: " + (currentPage != null ? currentPage : "None"));
+            System.out.println("1. Visit new page");
+            System.out.println("2. Go back");
+            System.out.println("3. Go forward");
+            System.out.println("4. Exit");
+            System.out.print("Choose option: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    if (currentPage != null) {
+                        backHistory.push(currentPage);
+                    }
+                    System.out.print("Enter page URL: ");
+                    currentPage = sc.nextLine();
+                    forwardHistory.clear();
+                    break;
+                case 2:
+                    if (!backHistory.isEmpty()) {
+                        forwardHistory.push(currentPage);
+                        currentPage = backHistory.pop();
+                    } else {
+                        System.out.println("No back history");
+                    }
+                    break;
+                case 3:
+                    if (!forwardHistory.isEmpty()) {
+                        backHistory.push(currentPage);
+                        currentPage = forwardHistory.pop();
+                    } else {
+                        System.out.println("No forward history");
+                    }
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+}
+Output:
+Current page: None
+1. Visit new page
+2. Go back
+3. Go forward
+4. Exit
+Choose option: 1
+Enter page URL: google.com
+
+Current page: google.com
+1. Visit new page
+2. Go back
+3. Go forward
+4. Exit
+Choose option: 1
+Enter page URL: github.com
+
+Current page: github.com
+1. Visit new page
+2. Go back
+3. Go forward
