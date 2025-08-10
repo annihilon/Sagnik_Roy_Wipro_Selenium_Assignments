@@ -1,0 +1,770 @@
+Wrapper Classes
+
+1. Check if character is a Digit
+
+package day7_assignment;
+
+public class CharacterDigitCheck {
+    public static void main(String[] args) {
+        char ch = '7';
+        System.out.println(Character.isDigit(ch));
+    }
+}
+Output:
+true
+
+2. Compare two Strings
+
+package day7_assignment;
+
+import java.util.Scanner;
+
+public class StringComparison {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter first string: ");
+        String str1 = sc.nextLine();
+
+        System.out.println("Enter second string: ");
+        String str2 = sc.nextLine();
+
+        if (str1.equals(str2)) {
+            System.out.println("Both Strings are equal");
+        } else {
+            System.out.println("Both Strings are not equal");
+        }
+    }
+}
+Output:
+Enter first string: 
+hello
+Enter second string: 
+world
+Both Strings are not equal
+
+3. Convert using valueOf method
+
+package day7_assignment;
+
+public class StringConversion {
+    public static void main(String[] args) {
+        int num = 456;
+        String str = String.valueOf(num);
+        System.out.println("Converted String: " + str);
+    }
+}
+Output:
+Converted String: 456
+
+4. Create Boolean Wrapper usage
+
+package day7_assignment;
+
+public class BooleanWrapperExample {
+    public static void main(String[] args) {
+        boolean flag = false;
+        Boolean boolObj1 = flag;
+        System.out.println("Boolean object from primitive: " + boolObj1);
+
+        Boolean boolObj2 = Boolean.valueOf("TRUE");
+        Boolean boolObj3 = Boolean.valueOf("false");
+        System.out.println("Boolean object from String (true): " + boolObj2);
+        System.out.println("Boolean object from String (false): " + boolObj3);
+
+        boolean primitive1 = boolObj2.booleanValue();
+        System.out.println("Primitive boolean from Boolean object: " + primitive1);
+
+        boolean parsedBool = Boolean.parseBoolean("FaLsE");
+        System.out.println("Parsed boolean from String: " + parsedBool);
+
+        if (boolObj2.equals(Boolean.TRUE)) {
+            System.out.println("The value is TRUE");
+        } else {
+            System.out.println("The value is FALSE");
+        }
+    }
+}
+Output:
+Boolean object from primitive: false
+Boolean object from String (true): true
+Boolean object from String (false): false
+Primitive boolean from Boolean object: true
+Parsed boolean from String: false
+The value is TRUE
+
+5. Convert null to wrapper classes
+
+package day7_assignment;
+
+public class NullWrapperConversion {
+    public static void main(String[] args) {
+        Integer intObj = null;
+        Double doubleObj = null;
+        Boolean boolObj = null;
+
+        System.out.println("Integer object: " + intObj);
+        System.out.println("Double object: " + doubleObj);
+        System.out.println("Boolean object: " + boolObj);
+    }
+}
+Output:
+
+Integer object: null
+Double object: null
+Boolean object: null
+Pass by Value and Pass by Reference
+
+1. Change integer parameter
+
+package day7_assignment;
+
+public class ValueChangeDemo {
+    static void modifyValue(int num) {
+        System.out.println("Inside method, before change: " + num);
+        num = 100;
+        System.out.println("Inside method, after change: " + num);
+    }
+
+    public static void main(String[] args) {
+        int number = 20;
+        System.out.println("Before method call: " + number);
+
+        modifyValue(number);
+
+        System.out.println("After method call: " + number);
+    }
+}
+Output:
+Before method call: 20
+Inside method, before change: 20
+Inside method, after change: 100
+After method call: 20
+
+2. Swap integer values
+
+package day7_assignment;
+
+public class ValueSwapDemo {
+    static void swapValues(int a, int b) {
+        System.out.println("Inside method, before swap: a = " + a + ", b = " + b);
+        int temp = a;
+        a = b;
+        b = temp;
+        System.out.println("Inside method, after swap: a = " + a + ", b = " + b);
+    }
+
+    public static void main(String[] args) {
+        int x = 15;
+        int y = 30;
+
+        System.out.println("Before method call: x = " + x + ", y = " + y);
+
+        swapValues(x, y);
+
+        System.out.println("After method call: x = " + x + ", y = " + y);
+    }
+}
+Output:
+Before method call: x = 15, y = 30
+Inside method, before swap: a = 15, b = 30
+Inside method, after swap: a = 30, b = 15
+After method call: x = 15, y = 30
+
+3. Pass primitive data types
+
+package day7_assignment;
+
+public class PrimitivePassDemo {
+    static void changePrimitives(int num, double val, boolean flag) {
+        num = 50;
+        val = 99.9;
+        flag = !flag;
+        System.out.println("Inside method - num: " + num + ", val: " + val + ", flag: " + flag);
+    }
+
+    public static void main(String[] args) {
+        int a = 10;
+        double b = 20.5;
+        boolean c = true;
+
+        System.out.println("Before method - a: " + a + ", b: " + b + ", c: " + c);
+
+        changePrimitives(a, b, c);
+
+        System.out.println("After method - a: " + a + ", b: " + b + ", c: " + c);
+    }
+}
+Output:
+
+Before method - a: 10, b: 20.5, c: true
+Inside method - num: 50, val: 99.9, flag: false
+After method - a: 10, b: 20.5, c: true
+
+4. Modify Box object
+
+package day7_assignment;
+
+class Box {
+    int length;
+}
+
+public class ObjectModificationDemo {
+    static void modifyBox(Box b) {
+        b.length = 25;
+        System.out.println("Inside method - length: " + b.length);
+    }
+
+    public static void main(String[] args) {
+        Box box = new Box();
+        box.length = 10;
+
+        System.out.println("Before method - length: " + box.length);
+
+        modifyBox(box);
+
+        System.out.println("After method - length: " + box.length);
+    }
+}
+Output:
+
+Before method - length: 10
+Inside method - length: 25
+After method - length: 25
+
+5. Modify object fields
+
+package day7_assignment;
+
+class Employee {
+    String name;
+    double salary;
+}
+
+public class ObjectFieldModification {
+    static void updateSalary(Employee emp) {
+        emp.salary = 50000;
+        System.out.println("Inside method - salary: " + emp.salary);
+    }
+
+    public static void main(String[] args) {
+        Employee e = new Employee();
+        e.name = "John";
+        e.salary = 30000;
+
+        System.out.println("Before method - salary: " + e.salary);
+
+        updateSalary(e);
+
+        System.out.println("After method - salary: " + e.salary);
+    }
+}
+Output:
+
+Before method - salary: 30000.0
+Inside method - salary: 50000.0
+After method - salary: 50000.0
+
+6. Update Student marks
+
+package day7_assignment;
+
+class Student {
+    String name;
+    int marks;
+}
+
+public class StudentMarksUpdate {
+    static void updateMarks(Student s) {
+        s.marks = 95;
+        System.out.println("Inside method - marks: " + s.marks);
+    }
+
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.name = "Alice";
+        student.marks = 80;
+
+        System.out.println("Before method - marks: " + student.marks);
+
+        updateMarks(student);
+
+        System.out.println("After method - marks: " + student.marks);
+    }
+}
+Output:
+Before method - marks: 80
+Inside method - marks: 95
+After method - marks: 95
+
+7. Call by value with objects
+
+package day7_assignment;
+
+class Point {
+    int x;
+    int y;
+}
+
+public class CallByValueDemo {
+    static void tryToChangeReference(Point p) {
+        p = new Point();
+        p.x = 100;
+        p.y = 200;
+        System.out.println("Inside method - x: " + p.x + ", y: " + p.y);
+    }
+
+    public static void main(String[] args) {
+        Point point = new Point();
+        point.x = 10;
+        point.y = 20;
+
+        System.out.println("Before method - x: " + point.x + ", y: " + point.y);
+
+        tryToChangeReference(point);
+
+        System.out.println("After method - x: " + point.x + ", y: " + point.y);
+    }
+}
+Output:
+
+Before method - x: 10, y: 20
+Inside method - x: 100, y: 200
+After method - x: 10, y: 20
+
+8. Assign new object to reference
+
+package day7_assignment;
+
+class Car {
+    String model;
+}
+
+public class ReferenceAssignmentDemo {
+    static void assignNewCar(Car c) {
+        c = new Car();
+        c.model = "Toyota";
+        System.out.println("Inside method - model: " + c.model);
+    }
+
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.model = "Honda";
+
+        System.out.println("Before method - model: " + car.model);
+
+        assignNewCar(car);
+
+        System.out.println("After method - model: " + car.model);
+    }
+}
+Output:
+
+Before method - model: Honda
+Inside method - model: Toyota
+After method - model: Honda
+
+9. Primitive vs Non-primitive difference
+
+package day7_assignment;
+
+class ValueHolder {
+    int value;
+}
+
+public class PrimitiveVsObjectDemo {
+    static void changePrimitive(int num) {
+        num = 100;
+    }
+
+    static void changeObject(ValueHolder v) {
+        v.value = 100;
+    }
+
+    public static void main(String[] args) {
+        int a = 10;
+        ValueHolder holder = new ValueHolder();
+        holder.value = 10;
+
+        System.out.println("Before - Primitive: " + a + ", Object: " + holder.value);
+
+        changePrimitive(a);
+        changeObject(holder);
+
+        System.out.println("After - Primitive: " + a + ", Object: " + holder.value);
+    }
+}
+Output:
+
+Before - Primitive: 10, Object: 10
+After - Primitive: 10, Object: 100
+
+10. Simulate call by reference
+
+package day7_assignment;
+
+public class SimulateCallByReference {
+    static void swapUsingArray(int[] arr) {
+        int temp = arr[0];
+        arr[0] = arr[1];
+        arr[1] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] values = {5, 10};
+
+        System.out.println("Before swap - values[0]: " + values[0] + ", values[1]: " + values[1]);
+
+        swapUsingArray(values);
+
+        System.out.println("After swap - values[0]: " + values[0] + ", values[1]: " + values[1]);
+    }
+}
+Output:
+
+Before swap - values[0]: 5, values[1]: 10
+After swap - values[0]: 10, values[1]: 5
+
+MultiThreading
+
+1. Extend Thread class
+
+package day7_assignment;
+
+public class NumberThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(i);
+        }
+    }
+
+    public static void main(String[] args) {
+        NumberThread thread = new NumberThread();
+        thread.start();
+    }
+}
+Output:
+
+1
+2
+3
+4
+5
+
+2. Implement Runnable interface
+
+package day7_assignment;
+
+public class ThreadNameDemo implements Runnable {
+    public void run() {
+        System.out.println("Current thread: " + Thread.currentThread().getName());
+    }
+
+    public static void main(String[] args) {
+        ThreadNameDemo demo = new ThreadNameDemo();
+        Thread thread = new Thread(demo);
+        thread.start();
+    }
+}
+Output:
+
+Current thread: Thread-0
+
+3. Two threads with different messages
+
+package day7_assignment;
+
+class MessageThread extends Thread {
+    private String message;
+
+    public MessageThread(String msg) {
+        this.message = msg;
+    }
+
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(message);
+        }
+    }
+}
+
+public class TwoThreadsDemo {
+    public static void main(String[] args) {
+        MessageThread thread1 = new MessageThread("Hello");
+        MessageThread thread2 = new MessageThread("World");
+
+        thread1.start();
+        thread2.start();
+    }
+}
+Output
+Hello
+Hello
+World
+Hello
+World
+Hello
+World
+Hello
+World
+World
+
+4. Thread.sleep() usage
+
+package day7_assignment;
+
+public class SleepDemo extends Thread {
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println(i);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        SleepDemo thread = new SleepDemo();
+        thread.start();
+    }
+}
+Output 
+1
+2
+3
+
+5. Thread.yield() usage
+
+package day7_assignment;
+
+class YieldThread extends Thread {
+    public void run() {
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Thread yielding: " + i);
+            Thread.yield();
+        }
+    }
+}
+
+public class YieldDemo {
+    public static void main(String[] args) {
+        YieldThread thread = new YieldThread();
+        thread.start();
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Main thread: " + i);
+        }
+    }
+}
+Output
+Thread yielding: 0
+Main thread: 0
+Main thread: 1
+Main thread: 2
+Thread yielding: 1
+Thread yielding: 2
+
+6. Even and odd numbers
+
+package day7_assignment;
+
+class EvenThread extends Thread {
+    public void run() {
+        for (int i = 2; i <= 10; i += 2) {
+            System.out.println("Even: " + i);
+        }
+    }
+}
+
+class OddThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 9; i += 2) {
+            System.out.println("Odd: " + i);
+        }
+    }
+}
+
+public class EvenOddDemo {
+    public static void main(String[] args) {
+        EvenThread even = new EvenThread();
+        OddThread odd = new OddThread();
+
+        even.start();
+        odd.start();
+    }
+}
+Outpu
+
+Even: 2
+Odd: 1
+Even: 4
+Odd: 3
+Even: 6
+Odd: 5
+Even: 8
+Odd: 7
+Even: 10
+Odd: 9
+
+7. Thread priorities
+
+package day7_assignment;
+
+class PriorityThread extends Thread {
+    public PriorityThread(String name) {
+        super(name);
+    }
+
+    public void run() {
+        System.out.println("Thread " + getName() + " running");
+    }
+}
+
+public class ThreadPriorityDemo {
+    public static void main(String[] args) {
+        PriorityThread t1 = new PriorityThread("High");
+        PriorityThread t2 = new PriorityThread("Normal");
+        PriorityThread t3 = new PriorityThread("Low");
+
+        t1.setPriority(Thread.MAX_PRIORITY);
+        t2.setPriority(Thread.NORM_PRIORITY);
+        t3.setPriority(Thread.MIN_PRIORITY);
+
+        t3.start();
+        t2.start();
+        t1.start();
+    }
+}
+Output
+Thread High running
+Thread Normal running
+Thread Low running
+
+8. Thread.join() usage
+
+package day7_assignment;
+
+class JoinThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("Thread running: " + i);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+public class JoinDemo {
+    public static void main(String[] args) {
+        JoinThread thread = new JoinThread();
+        thread.start();
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Main thread continues after join");
+    }
+}
+Output:
+Thread running: 1
+Thread running: 2
+Thread running: 3
+Main thread continues after join
+
+9. Stop thread with boolean flag
+
+package day7_assignment;
+
+class StoppableThread extends Thread {
+    private boolean stop = false;
+
+    public void run() {
+        while (!stop) {
+            System.out.println("Thread running");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Thread stopped");
+    }
+
+    public void stopThread() {
+        stop = true;
+    }
+}
+
+public class ThreadStopDemo {
+    public static void main(String[] args) {
+        StoppableThread thread = new StoppableThread();
+        thread.start();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        thread.stopThread();
+    }
+}
+Output:
+
+Thread running
+Thread running
+Thread running
+Thread running
+Thread stopped
+
+10. Race condition
+
+package day7_assignment;
+
+class Counter {
+    int count = 0;
+
+    public void increment() {
+        count++;
+    }
+}
+
+public class RaceConditionDemo {
+    public static void main(String[] args) {
+        Counter counter = new Counter();
+
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Final count: " + counter.count);
+    }
+}
+Output
+Final count: 1923
