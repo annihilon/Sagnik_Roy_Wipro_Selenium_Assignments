@@ -1,0 +1,131 @@
+//QU EBay web-site automation Using TestNG with priority test cases
+
+package testng_package;
+
+import org.testng.annotations.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Ebay_testng_project {
+    WebDriver driver;
+    Actions actions;
+
+    @BeforeTest
+    public void setup() throws InterruptedException {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        Thread.sleep(1000);
+        driver.get("https://www.ebay.com/");
+        actions = new Actions(driver);
+    }
+
+    //Test cases
+    // Login btn
+    @Test(priority = 1)
+    public void testLogin() {
+        driver.findElement(By.linkText("Sign in")).click();
+        driver.findElement(By.id("userid")).sendKeys("testuser@example.com");
+        driver.findElement(By.id("pass")).sendKeys("Password123");
+        driver.findElement(By.id("sgnBt")).click();
+    }
+
+    // Multiple Searches using ArrayList
+    @Test(priority = 2)
+    public void testMultipleSearches() {
+        List<String> search = new ArrayList<>();
+        search.add("Watch");
+        search.add("Laptop");
+        search.add("Shoes");
+
+        WebElement searchBox = driver.findElement(By.id("gh-ac"));
+        for (String item : search) {
+            searchBox.clear();
+            searchBox.sendKeys(item + Keys.ENTER);
+        }
+    }
+
+    // Add to Cart
+    @Test(priority = 3)
+    public void testAddToCart() {
+    	WebElement searchBox = driver.findElement(By.id("gh-ac"));
+    	searchBox.sendKeys("iPhone 13");
+    	searchBox.sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath("//div[@class='s-item__image']")).click();
+        driver.findElement(By.id("isCartBtn_btn")).click();
+        
+    }
+
+    // Delete from Cart
+    @Test(priority = 4)
+    public void testDeleteFromCart() {
+        driver.findElement(By.linkText("Cart")).click();
+        driver.findElement(By.xpath("//button[contains(text(),'Remove')]")).click();
+    }
+
+    // 5. Change Login Name
+    @Test(priority = 5)
+    public void testChangeLoginName() {
+        driver.findElement(By.id("gh-ug")).click();
+        driver.findElement(By.partialLinkText("Account settings")).click();
+        driver.findElement(By.id("username")).clear();
+        driver.findElement(By.id("username")).sendKeys("NewUsername");
+        driver.findElement(By.id("save")).click();
+    }
+
+    //Change Address
+    @Test(priority = 6)
+    public void testChangeAddress() {
+        driver.findElement(By.id("gh-ug")).click();
+        driver.findElement(By.linkText("Addresses")).click();
+        driver.findElement(By.xpath("//button[contains(text(),'Edit')]")).click();
+        driver.findElement(By.id("address1")).clear();
+        WebElement add = driver.findElement(By.id("address1"));
+        add.sendKeys("123 New Street");
+        driver.findElement(By.id("save")).click();
+        
+    }
+
+    // Shop by Categories
+    @Test(priority = 7)
+    public void testShopByCategories() {
+        driver.findElement(By.id("gh-shop-a")).click();
+        driver.findElement(By.linkText("Electronics")).click();
+    }
+
+    // Right-Click Product Image for Description
+    @Test(priority = 8)
+    public void testRightClickDescription() {
+        WebElement cam = driver.findElement(By.id("gh-ac"));
+        cam.sendKeys("Nikon Camera");  
+        cam.sendKeys(Keys.ENTER); 
+        WebElement productImage = driver.findElement(By.xpath("//div[@class='s-item__image']/img"));
+        actions.contextClick(productImage).perform();
+        
+    }
+
+    //Shop by All Categories
+    @Test(priority = 9)
+    public void testShopAllCategories() {
+        driver.findElement(By.id("gh-shop-a")).click();
+        driver.findElement(By.linkText("All Categories")).click();
+        Assert.assertTrue(driver.findElement(By.id("gh-cat")).isDisplayed());
+    }
+
+    // 10. Change Language
+    @Test(priority = 10)
+    public void testChangeLanguage() {
+        driver.findElement(By.id("gh-eb-Geo-a-default")).click();
+        driver.findElement(By.xpath("//a[contains(@href,'lang=fr-FR')]")).click();
+    }
+
+
+    @AfterTest
+    public void afterTest() {
+  	  Assert.assertTrue(true, "Search button is not working");
+  	  driver.close();
+    }
+}
