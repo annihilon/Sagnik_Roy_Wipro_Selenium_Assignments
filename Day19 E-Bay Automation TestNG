@@ -25,26 +25,38 @@ public class Ebay_testng_project {
 
     //Test cases
     // Login btn
-    @Test(priority = 1)
-    public void testLogin() {
+    public void testLogin() throws InterruptedException {
         driver.findElement(By.linkText("Sign in")).click();
-        driver.findElement(By.id("userid")).sendKeys("testuser@example.com");
-        driver.findElement(By.id("pass")).sendKeys("Password123");
+        Thread.sleep(1000);
+        driver.findElement(By.id("userid")).sendKeys("sroy20442@gmail.com");
+        
+        driver.findElement(By.id("signin-continue-btn")).click();
+        Thread.sleep(1000);
+        
+        driver.findElement(By.id("pass")).sendKeys("Pword123@79");
+        Thread.sleep(1000);
         driver.findElement(By.id("sgnBt")).click();
+        
+        
     }
 
     // Multiple Searches using ArrayList
     @Test(priority = 2)
-    public void testMultipleSearches() {
-        List<String> search = new ArrayList<>();
-        search.add("Watch");
-        search.add("Laptop");
-        search.add("Shoes");
+    public void testMultipleSearches() throws InterruptedException {
+    	List<String> searchItems = new ArrayList<>();
+        searchItems.add("Watch");
+        searchItems.add("Laptop");
+        searchItems.add("Shoes");
 
         WebElement searchBox = driver.findElement(By.id("gh-ac"));
-        for (String item : search) {
+        
+        for (String item : searchItems) {
             searchBox.clear();
-            searchBox.sendKeys(item + Keys.ENTER);
+            searchBox.sendKeys(item);
+            searchBox.sendKeys(Keys.ENTER);
+            
+            Thread.sleep(2000);
+            searchBox = driver.findElement(By.id("gh-ac"));
         }
     }
 
