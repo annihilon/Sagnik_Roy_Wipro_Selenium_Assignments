@@ -25,6 +25,7 @@ public class Ebay_testng_project {
 
     //Test cases
     // Login btn
+	@Test(priority = 1)
     public void testLogin() throws InterruptedException {
         driver.findElement(By.linkText("Sign in")).click();
         Thread.sleep(1000);
