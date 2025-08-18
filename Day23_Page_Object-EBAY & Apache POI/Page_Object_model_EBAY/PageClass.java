@@ -82,7 +82,6 @@ public class PageClass {
     // Account methods
     public void changeUsername(String newUsername) {
         navigateToAccountSettings();
-        // Add implementation for username change
     }
     
     public void changeAddress(String newAddress, String city) {
@@ -139,4 +138,5 @@ public class PageClass {
     private void scrollDown(int pixels) {
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + pixels + ")");
     }
+
 }
