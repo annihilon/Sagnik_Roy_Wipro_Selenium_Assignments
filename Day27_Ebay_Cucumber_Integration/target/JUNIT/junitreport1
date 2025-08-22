@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="123.533" tests="10" skipped="0" failures="2" errors="0" timestamp="2025-08-22T03:03:12.714009200Z">
+<testcase classname="Login to eBay" name="Login with valid credentials - #1.1" time="6.325">
+<system-out><![CDATA[
+Given login page should be open in default browser1.........................passed
+When click on signin link and enter sroy20442@gmail.com and Pword123@79.....passed
+Then login successfully and open home page..................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Search products on eBay" name="Perform multiple searches - #1.1" time="10.816">
+<system-out><![CDATA[
+Given user is logged in and search page is available........................passed
+When enter Watch in search box..............................................passed
+Then search results should be displayed.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Search products on eBay" name="Perform multiple searches - #1.2" time="9.82">
+<system-out><![CDATA[
+Given user is logged in and search page is available........................passed
+When enter Pen in search box................................................passed
+Then search results should be displayed.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Search products on eBay" name="Perform multiple searches - #1.3" time="10.226">
+<system-out><![CDATA[
+Given user is logged in and search page is available........................passed
+When enter Laptop in search box.............................................passed
+Then search results should be displayed.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Change user address" name="Update user address details - #1.1" time="23.145">
+<failure type="org.openqa.selenium.TimeoutException" message="Expected condition failed: waiting for element to be clickable: By.xpath: //*[@id=&quot;item475960219e&quot;]/div/div[1]/div/a/div/img (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.34.0', revision: '2a4c61c498'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 139.0.7258.128, chrome: {chromedriverVersion: 139.0.7258.138 (884e54ea8d4..., userDataDir: C:\Users\SAGNIK\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:10147}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:10147/devtoo..., se:cdpVersion: 139.0.7258.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 25ba2534951836f5fd5592f9a6db3c3c">
+<![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //*[@id="item475960219e"]/div/div[1]/div/a/div/img (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.34.0', revision: '2a4c61c498'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 139.0.7258.128, chrome: {chromedriverVersion: 139.0.7258.138 (884e54ea8d4..., userDataDir: C:\Users\SAGNIK\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:10147}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:10147/devtoo..., se:cdpVersion: 139.0.7258.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 25ba2534951836f5fd5592f9a6db3c3c
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at step_definition_ebay.PageClass.clickElement(PageClass.java:143)
+	at step_definition_ebay.PageClass.changeAddress(PageClass.java:92)
+	at step_definition_ebay.AddressSteps.change_address_to_add_and_city_to_city1(AddressSteps.java:26)
+	at ✽.change address to 1223ABC road and city to Kolkata(file:///C:/Users/SAGNIK/OneDrive/Desktop/Codes/JAVA%20CODES/Cucumber-BDD/src/test/resources/Features_ebay/03Address.feature:5)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is logged in and account page is open............................passed
+When change address to 1223ABC road and city to Kolkata.....................failed
+Then address should be updated successfully.................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Add and remove items from cart" name="Add product to cart and remove it" time="28.139">
+<failure type="org.openqa.selenium.NoSuchSessionException" message="invalid session id
+Build info: version: '4.34.0', revision: '2a4c61c498'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [758824ebd3f420429b804ae5b4d0ae00, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 139.0.7258.128, chrome: {chromedriverVersion: 139.0.7258.138 (884e54ea8d4..., userDataDir: C:\Users\SAGNIK\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:2772}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:2772/devtool..., se:cdpVersion: 139.0.7258.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 758824ebd3f420429b804ae5b4d0ae00">
+<![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
+Build info: version: '4.34.0', revision: '2a4c61c498'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [758824ebd3f420429b804ae5b4d0ae00, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 139.0.7258.128, chrome: {chromedriverVersion: 139.0.7258.138 (884e54ea8d4..., userDataDir: C:\Users\SAGNIK\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:2772}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:2772/devtool..., se:cdpVersion: 139.0.7258.128, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 758824ebd3f420429b804ae5b4d0ae00
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:544)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:617)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:621)
+	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:417)
+	at step_definition_ebay.CartSteps.add_and_delete_to_cart_successful(CartSteps.java:58)
+	at ✽.Add and delete to cart successful(file:///C:/Users/SAGNIK/OneDrive/Desktop/Codes/JAVA%20CODES/Cucumber-BDD/src/test/resources/Features_ebay/04Cart.feature:6)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is logged in and homepage is open1...............................passed
+When add product items to cart..............................................passed
+Then Add and delete to cart successful......................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Browse products by categories" name="Shop by all categories" time="9.388">
+<system-out><![CDATA[
+Given user is logged in and homepage is open................................passed
+When click on all categories................................................passed
+Then all categories page should be displayed................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Browse products by categories" name="Shop by art category" time="10.332">
+<system-out><![CDATA[
+Given user is logged in and homepage is open................................passed
+When click on art category..................................................passed
+Then art category page should be displayed..................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Footer links" name="Checking footer facebook link" time="9.628">
+<system-out><![CDATA[
+Given open in default browser...............................................passed
+When click on facebook and check working....................................passed
+Then successful footer working..............................................passed
+]]></system-out>
+</testcase>
+<testcase classname="check daily deals" name="to check the daily deals" time="5.489">
+<system-out><![CDATA[
+Given open the eBay website in uur browserrr................................passed
+When click on daily deals...................................................passed
+Then daily deals page is opened.............................................passed
+]]></system-out>
+</testcase>
+</testsuite>
